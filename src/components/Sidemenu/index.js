@@ -10,14 +10,14 @@ const Sidemenu = () => {
       className='sidemenu'
       initial={{ opacity: 0, width: '0vw' }}
       animate={{ opacity: 1, width: '400px' }}
-      transition={{ delay: 3 }}
+      transition={{ delay: 2 }}
     >
       <motion.img
         src={'./ulnaris-logo.png'}
         alt={'Ulnaris Logo'}
         initial={{ opacity: 0, width: '350px', height: '350px' }}
         animate={{ opacity: 1, width: '350px', height: '350px' }}
-        transition={{ delay: 4, duration: 1 }}
+        transition={{ delay: 3, duration: 1 }}
         style={{ margin: '0 auto', display: 'block' }}
       />
 
@@ -25,10 +25,10 @@ const Sidemenu = () => {
         className='sidemenu-content'
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 5, duration: 0.5 }}
+        transition={{ delay: 4, duration: 0.5 }}
       >
         <h3>
-          Welcome <span>John Doe</span>
+          Welcome <span>Visitor</span>
         </h3>
 
         <AnimatePresence>
@@ -63,7 +63,7 @@ const Intro = ({ intro, setIntro }) => {
       </p>
 
       <p>
-        Patient, with his examinations are send to database where the files are
+        Patient, with his examinations is send to database where the files are
         kept. You can add new patient, add new exam and delete them at any time.
       </p>
 

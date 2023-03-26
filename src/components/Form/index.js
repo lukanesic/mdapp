@@ -16,16 +16,16 @@ const Form = ({ setForward, setSuccess }) => {
       exit={{
         opacity: 0,
         transition: {
-          delay: 0.5,
+          delay: 0.8,
         },
       }}
-      transition={{ duration: 0.8, delay: 3 }}
+      transition={{ duration: 0.8, delay: 3.5 }}
     >
       <h3>Sign in</h3>
       <input type='text' placeholder='Username' />
       <button className='empty'>Next</button>
 
-      <span>Or continue as John Doe to test the application</span>
+      <span>Or continue as Visitor to test the application</span>
       <button className='full' onClick={() => handleTransition()}>
         Test App
       </button>

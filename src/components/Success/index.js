@@ -5,7 +5,7 @@ const Success = ({ success, setSuccess }) => {
   useEffect(() => {
     setTimeout(() => {
       setSuccess(false)
-    }, 2000)
+    }, 1500)
   }, [])
 
   return (
