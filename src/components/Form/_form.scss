@@ -1,0 +1,57 @@
+.form {
+  display: grid;
+  place-content: center;
+  height: inherit;
+  width: inherit;
+  z-index: 1000;
+  color: $text-blue;
+  padding-top: 14rem;
+
+  h3 {
+    font-size: 35px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  input {
+    border: none;
+    border-bottom: 1px solid $text-blue;
+    outline: none;
+    margin: 1rem 0 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: $text-blue;
+    font-size: 1rem;
+  }
+
+  input::placeholder {
+    color: $text-lightblue;
+  }
+
+  button {
+    display: block;
+    width: fit-content;
+    font-size: 1rem;
+    padding: 0.5rem 2.3rem;
+    border: none;
+    background-color: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .empty {
+    color: $text-blue;
+    background-color: #fff;
+    border: 1px solid $text-blue;
+  }
+
+  .full {
+    background-color: $text-blue;
+    color: #fff;
+  }
+
+  span {
+    margin: 2rem 0 1rem;
+  }
+}
