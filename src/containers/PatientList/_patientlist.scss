@@ -1,8 +1,9 @@
 .patientlist {
-  width: 50%;
-  background-color: rgba(217, 231, 237, 0.1);
+  width: 40%;
+  background-color: rgba(217, 231, 237, 0.3);
   height: 100vh;
   padding: 2rem;
+  overflow-y: scroll;
 
   .patientlist-top {
     display: flex;
@@ -13,7 +14,9 @@
   .patientlist-list {
     display: grid;
     grid-template-columns: repeat(2, auto);
-    grid-gap: 1rem;
+    grid-gap: 2rem;
     margin: 3rem 0;
+
+    justify-content: space-between;
   }
 }

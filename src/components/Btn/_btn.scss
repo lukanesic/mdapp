@@ -8,11 +8,25 @@
   transition: all 0.4s ease;
 }
 
+.delete-btn {
+  font-size: 0.85rem;
+  color: #fff;
+  background-color: #1a80b3;
+  border: none;
+  border-radius: 5px;
+}
+
+.delete-btn:hover {
+  background-color: #074c6f;
+}
+
 .patient-btn {
   width: inherit;
   background-color: #99d9e9;
   color: #fff;
   border: none;
+  border-radius: 0 !important;
+  font-size: 0.85rem;
 }
 
 .patient-btn:hover {

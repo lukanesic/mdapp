@@ -43,7 +43,7 @@ p {
 // layouts
 .patients {
   display: flex;
-  width: 70vw;
+  width: 75vw;
 }
 
 .credits {
@@ -70,6 +70,10 @@ p {
 @import './../components/Heading2/heading2';
 @import './../components/Seach/search';
 @import './../components/PatientCard/patientcard';
+@import './../components/Heading3/heading3';
+@import './../components/Heading6/heading6';
+@import './../components/PatientInfo/patientinfo';
+@import './../components/PatientExams/patientexams';
 
 @import './../containers/Dashboard/dashboard';
 @import './../containers/PatientList/patientlist';

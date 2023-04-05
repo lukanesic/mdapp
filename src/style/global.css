@@ -34,7 +34,7 @@ p {
 
 .patients {
   display: flex;
-  width: 70vw;
+  width: 75vw;
 }
 
 .credits {
@@ -107,11 +107,25 @@ p {
   transition: all 0.4s ease;
 }
 
+.delete-btn {
+  font-size: 0.85rem;
+  color: #fff;
+  background-color: #1a80b3;
+  border: none;
+  border-radius: 5px;
+}
+
+.delete-btn:hover {
+  background-color: #074c6f;
+}
+
 .patient-btn {
   width: inherit;
   background-color: #99d9e9;
   color: #fff;
   border: none;
+  border-radius: 0 !important;
+  font-size: 0.85rem;
 }
 
 .patient-btn:hover {
@@ -236,17 +250,21 @@ p {
 }
 
 .patientcard {
-  width: 230px;
-  height: 280px;
+  width: 200px;
+  height: 300px;
   background-color: #fff;
   border-radius: 5px;
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .patientcard .profile-container {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   position: relative;
-  margin-bottom: 1rem;
+  margin: 2rem auto 0rem;
 }
 .patientcard .profile-container .profile {
   -o-object-fit: cover;
@@ -254,21 +272,104 @@ p {
   border-radius: 50%;
   width: 100%;
   height: 100%;
-  margin: 0 auto;
-  display: block;
 }
 .patientcard .profile-container .circle {
   height: 100%;
   width: 100%;
-  border: 1px solid #01a1c8;
   border-radius: 50%;
   position: absolute;
   top: 0;
   left: 0;
 }
+.patientcard .info {
+  text-align: center;
+}
+
+.heading3 {
+  color: #1a80b3;
+  font-weight: 300;
+  letter-spacing: -1px;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.heading6 {
+  font-size: 0.8rem;
+  color: rgba(1, 161, 200, 0.75);
+  font-weight: 300;
+  letter-spacing: -0.2px;
+}
+
+.patientinfo {
+  position: relative;
+  background-color: rgb(1, 161, 200);
+  width: 100%;
+  padding: 1rem 0rem;
+}
+.patientinfo .icon {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 1.2rem;
+  color: #fff;
+  cursor: pointer;
+}
+.patientinfo .patient-info-box {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+}
+.patientinfo .patient-info-box .left {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-right: 2rem;
+}
+.patientinfo .patient-info-box .left img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+.patientinfo .patient-info-box .right {
+  color: #fff;
+}
+.patientinfo .patient-info-box .right ul {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  margin: 1rem 0 2rem;
+}
+.patientinfo .patient-info-box .right ul li {
+  list-style-type: none;
+  margin: 0.25rem 0;
+  font-weight: 400;
+  letter-spacing: -0.25px;
+  margin-right: 3rem;
+}
+.patientinfo .patient-info-box .right ul li span {
+  font-weight: 200;
+}
+
+.patientexams {
+  padding: 2rem;
+}
+.patientexams .placeholders {
+  width: 500px;
+  margin-left: 4rem;
+  margin-top: 4rem;
+}
+.patientexams .placeholders img {
+  width: 200px;
+  height: 100px;
+  margin-left: -2rem;
+}
+.patientexams .placeholders .empty-div {
+  height: 30px;
+}
 
 .dashboard {
-  width: 30vw;
+  width: 25vw;
   height: 100vh;
   position: relative;
   display: flex;
@@ -305,10 +406,11 @@ p {
 }
 
 .patientlist {
-  width: 50%;
-  background-color: rgba(217, 231, 237, 0.1);
+  width: 40%;
+  background-color: rgba(217, 231, 237, 0.3);
   height: 100vh;
   padding: 2rem;
+  overflow-y: scroll;
 }
 .patientlist .patientlist-top {
   display: flex;
@@ -318,6 +420,12 @@ p {
 .patientlist .patientlist-list {
   display: grid;
   grid-template-columns: repeat(2, auto);
-  grid-gap: 1rem;
+  grid-gap: 2rem;
   margin: 3rem 0;
+  justify-content: space-between;
+}
+
+.patient {
+  height: 100vh;
+  width: 60%;
 }/*# sourceMappingURL=global.css.map */

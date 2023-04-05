@@ -27,6 +27,34 @@ const patients = [
       'https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
     id: '3',
   },
+  {
+    name: 'Jovana Jeremic',
+    email: 'debil@gmail.com',
+    profile:
+      'https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+    id: '4',
+  },
+  {
+    name: 'Jovana Jeremic',
+    email: 'debil@gmail.com',
+    profile:
+      'https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+    id: '5',
+  },
+  {
+    name: 'Jovana Jeremic',
+    email: 'debil@gmail.com',
+    profile:
+      'https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+    id: '6',
+  },
+  {
+    name: 'Jovana Jeremic',
+    email: 'debil@gmail.com',
+    profile:
+      'https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+    id: '7',
+  },
 ]
 
 const PatientList = () => {

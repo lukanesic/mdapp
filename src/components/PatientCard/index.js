@@ -1,4 +1,6 @@
 import React from 'react'
+import Heading3 from '../Heading3'
+import Heading6 from '../Heading6'
 import Btn from './../Btn'
 
 const PatientCard = ({ name, subtitle, btnText, profile }) => {
@@ -10,8 +12,8 @@ const PatientCard = ({ name, subtitle, btnText, profile }) => {
       </div>
 
       <div className='info'>
-        <h3>{name}</h3>
-        <h6>{subtitle}</h6>
+        <Heading3 text={name} />
+        <Heading6 text={subtitle} />
       </div>
       <Btn onClick={'hey'} title={'View Patient'} cls={'patient-btn'} />
     </div>
