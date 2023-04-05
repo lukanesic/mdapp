@@ -1,0 +1,55 @@
+.search {
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  width: 250px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  input {
+    outline: none;
+    background-color: transparent;
+    border: none;
+    width: 190px;
+  }
+
+  .dark {
+    background-color: #7bcbde;
+    color: #fff;
+  }
+
+  .dark::placeholder {
+    color: rgb(246, 246, 246);
+  }
+
+  .light {
+    background-color: #dcecf0;
+    color: #01a1c8;
+  }
+
+  .light::placeholder {
+    color: #01bdec;
+  }
+}
+
+.dark {
+  background-color: #7bcbde;
+  color: #fff;
+}
+
+.dark::placeholder {
+  color: rgb(246, 246, 246);
+}
+
+.light {
+  background-color: #dcecf0;
+  color: #01a1c8;
+}
+
+.light::placeholder {
+  color: #01bdec;
+}

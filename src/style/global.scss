@@ -27,10 +27,23 @@ p {
   cursor: default;
 }
 
+// pages
 .login {
   height: 100vh;
   width: 100%;
   position: relative;
+}
+
+.home {
+  max-width: 1800px;
+  margin: 0 auto;
+  display: flex;
+}
+
+// layouts
+.patients {
+  display: flex;
+  width: 70vw;
 }
 
 .credits {
@@ -48,7 +61,16 @@ p {
   }
 }
 
-@import './../components/Loading/loading';
-@import './../components/Form/form';
-@import './../components/Success/success';
-@import './../components/Sidemenu/sidemenu';
+@import './../components/LoginForm/loginform';
+@import './../components/LoginLogo/loginlogo';
+@import './../components/Btn/btn';
+@import './../components/Transition/transition';
+@import './../components/Heading1/heading1';
+@import './../components/Paragraph/paragraph';
+@import './../components/Heading2/heading2';
+@import './../components/Seach/search';
+@import './../components/PatientCard/patientcard';
+
+@import './../containers/Dashboard/dashboard';
+@import './../containers/PatientList/patientlist';
+@import './../containers/Patient/patient';

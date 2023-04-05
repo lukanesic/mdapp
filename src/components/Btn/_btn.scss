@@ -1,0 +1,44 @@
+.button {
+  display: block;
+  font-size: 1rem;
+  padding: 0.5rem 2.3rem;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.patient-btn {
+  width: inherit;
+  background-color: #99d9e9;
+  color: #fff;
+  border: none;
+}
+
+.patient-btn:hover {
+  background-color: #01a1c8;
+}
+
+.empty {
+  width: 200px;
+  border: 1px solid $text-blue;
+  background-color: transparent;
+  color: $text-blue;
+}
+
+.empty:hover {
+  background-color: $text-blue;
+  color: #fff;
+}
+
+.full {
+  width: 200px;
+  border: none;
+  background: $text-blue;
+  color: #fff;
+}
+
+.full:hover {
+  background-color: $text-dark;
+  color: #fff;
+}

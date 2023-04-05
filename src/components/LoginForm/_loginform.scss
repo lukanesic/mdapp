@@ -1,4 +1,4 @@
-.form {
+.login-form {
   display: grid;
   place-content: center;
   height: inherit;
@@ -28,27 +28,13 @@
     color: $text-lightblue;
   }
 
-  button {
-    display: block;
-    width: fit-content;
-    font-size: 1rem;
-    padding: 0.5rem 2.3rem;
-    border: none;
-    background-color: none;
-    outline: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+  .err {
+    display: flex;
+    align-items: center;
 
-  .empty {
-    color: $text-blue;
-    background-color: #fff;
-    border: 1px solid $text-blue;
-  }
-
-  .full {
-    background-color: $text-blue;
-    color: #fff;
+    span {
+      padding-bottom: 1rem;
+    }
   }
 
   span {

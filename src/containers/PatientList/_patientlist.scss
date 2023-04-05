@@ -1,0 +1,19 @@
+.patientlist {
+  width: 50%;
+  background-color: rgba(217, 231, 237, 0.1);
+  height: 100vh;
+  padding: 2rem;
+
+  .patientlist-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .patientlist-list {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 1rem;
+    margin: 3rem 0;
+  }
+}
