@@ -3,9 +3,11 @@ import Heading3 from '../Heading3'
 import Heading6 from '../Heading6'
 import Btn from './../Btn'
 
-const PatientCard = ({ name, subtitle, btnText, profile }) => {
+import { motion } from 'framer-motion'
+
+const PatientCard = ({ name, subtitle, btnText, profile, index }) => {
   return (
-    <div className='patientcard'>
+    <motion.div className='patientcard'>
       <div className='profile-container'>
         <img src={profile} alt={name} className='profile' />
         <div className='circle' />
@@ -16,7 +18,7 @@ const PatientCard = ({ name, subtitle, btnText, profile }) => {
         <Heading6 text={subtitle} />
       </div>
       <Btn onClick={'hey'} title={'View Patient'} cls={'patient-btn'} />
-    </div>
+    </motion.div>
   )
 }
 

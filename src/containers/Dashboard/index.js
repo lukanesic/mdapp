@@ -6,9 +6,16 @@ import { HiUsers, HiUserAdd } from 'react-icons/hi'
 import { BsCalendarWeek } from 'react-icons/bs'
 import { MdPostAdd } from 'react-icons/md'
 
+import { motion } from 'framer-motion'
+
 const Dashboard = ({ dashboard, setDashboard }) => {
   return (
-    <div className='dashboard'>
+    <motion.div
+      className='dashboard'
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 5, duration: 1.2 }}
+    >
       <img src='./dash-logo.png' alt='Ulnaris Logo' />
       <div className='welcome-message'>
         <Heading1 title={'Welcome Visitor'} />
@@ -37,7 +44,7 @@ const Dashboard = ({ dashboard, setDashboard }) => {
           <li>Logout</li>
         </ul>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

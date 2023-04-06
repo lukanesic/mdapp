@@ -2,12 +2,19 @@ import React from 'react'
 import PatientExams from '../../components/PatientExams'
 import PatientInfo from '../../components/PatientInfo'
 
+import { motion } from 'framer-motion'
+
 const Patient = () => {
   return (
-    <div className='patient'>
+    <motion.div
+      className='patient'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 3, duration: 1 }}
+    >
       <PatientInfo patient />
       <PatientExams />
-    </div>
+    </motion.div>
   )
 }
 

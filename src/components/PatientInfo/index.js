@@ -4,6 +4,8 @@ import Btn from './../Btn'
 
 import { AiOutlineClose } from 'react-icons/ai'
 
+import { motion } from 'framer-motion'
+
 const PatientInfo = ({ patient }) => {
   return (
     <div className='patientinfo'>
@@ -12,7 +14,12 @@ const PatientInfo = ({ patient }) => {
       {!patient && <Placeholders />}
 
       {patient && (
-        <div className='patient-info-box'>
+        <motion.div
+          className='patient-info-box'
+          initial={{ y: 10, scale: 0.98, opacity: 0 }}
+          animate={{ y: 0, scale: 1, opacity: 1 }}
+          transition={{ delay: 3, duration: 1.5 }}
+        >
           <div className='left'>
             <img
               src='https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
@@ -20,25 +27,19 @@ const PatientInfo = ({ patient }) => {
             />
           </div>
           <div className='right'>
-            <Heading2 text={'Pacijent'} color={'#fff'} />
+            <Heading2 text={'Djinajlou Ali'} color={'#fff'} />
             <ul>
               <li>
-                phone: <span>+5352351</span>
+                Phone: <span>+5352351433</span>
               </li>
               <li>
-                email: <span>alicemcenze@gmail.com</span>
+                Email: <span>alicemcenze@gmail.com</span>
               </li>
               <li>
-                patientID: <span>3411351</span>
+                Patient ID: <span>3411351</span>
               </li>
               <li>
-                birthdate: <span>31.12.2011</span>
-              </li>
-              <li>
-                next app: <span>20.12.2022</span>
-              </li>
-              <li>
-                lastt app: <span>19.12.2022</span>
+                Birth Date: <span>31.12.2011</span>
               </li>
             </ul>
             <Btn
@@ -47,7 +48,7 @@ const PatientInfo = ({ patient }) => {
               cls={'delete-btn'}
             />
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   )

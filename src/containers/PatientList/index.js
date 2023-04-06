@@ -4,6 +4,8 @@ import PatientCard from '../../components/PatientCard'
 import Heading2 from './../../components/Heading2'
 import Search from './../../components/Seach'
 
+import { motion } from 'framer-motion'
+
 // test data
 const patients = [
   {
@@ -57,24 +59,63 @@ const patients = [
   },
 ]
 
+const container = {
+  initial: { opacity: 0 },
+  animate: {
+    opacity: 1,
+    transition: { delayChildren: 3.5, staggerChildren: 0.4 },
+  },
+}
+
+const item = {
+  initial: { scale: 0.98, y: 10, opacity: 0 },
+  animate: {
+    scale: 1,
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+}
+
 const PatientList = () => {
   return (
-    <div className='patientlist'>
-      <div className='patientlist-top'>
+    <motion.div
+      className='patientlist'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 3, duration: 1.5 }}
+    >
+      <motion.div
+        className='patientlist-top'
+        initial={{ y: 10, scale: 0.98, opacity: 0 }}
+        animate={{ y: 0, scale: 1, opacity: 1 }}
+        transition={{ delay: 3.2, duration: 1.5 }}
+      >
         <Heading2 text={'Patients'} />
         <Search cls={'light'} placeholder={'Search by name'} />
-      </div>
-      <div className='patientlist-list'>
+      </motion.div>
+
+      <motion.div
+        className='patientlist-list'
+        variants={container}
+        initial='initial'
+        animate='animate'
+      >
         {patients.map((patient, index) => (
-          <PatientCard
-            key={patient.id}
-            name={patient.name}
-            subtitle={patient.email}
-            profile={patient.profile}
-          />
+          <motion.div variants={item}>
+            <PatientCard
+              key={patient.id}
+              name={patient.name}
+              subtitle={patient.email}
+              profile={patient.profile}
+              index={index}
+            />
+          </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 
