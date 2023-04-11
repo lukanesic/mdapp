@@ -37,6 +37,16 @@ p {
   width: 75vw;
 }
 
+.appointments {
+  background-color: rgba(217, 231, 237, 0.3);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  width: 75vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .credits {
   position: fixed;
   bottom: 1rem;
@@ -369,6 +379,13 @@ p {
   height: 30px;
 }
 
+.examsheader {
+  background-color: rgba(1, 161, 200, 0.1);
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
 .dashboard {
   width: 25vw;
   height: 100vh;
@@ -429,4 +446,66 @@ p {
 .patient {
   height: 100vh;
   width: 60%;
+}
+
+.latest-app {
+  border: 1px solid blue;
+}
+.latest-app .latest {
+  padding: 2rem 0 0.5rem;
+  display: flex;
+  overflow-y: scroll;
+}
+.latest-app .latest .add-margin-on-card {
+  margin-right: 2rem;
+}
+
+.allexams {
+  border: 1px solid black;
+  background-color: #fff;
+}
+.allexams .allexams-container {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  padding: 0rem 2rem;
+  border: 1px solid green;
+  height: 270px;
+  overflow: scroll;
+}
+
+.allexams-small-header {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  padding: 0rem 2rem;
+}
+.allexams-small-header .examsinfo {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid red;
+}
+
+.exam {
+  border: 1px solid blue;
+  display: flex;
+  justify-content: space-between;
+}
+.exam .left {
+  border: 1px solid brown;
+  display: flex;
+  align-items: center;
+}
+.exam .left .exampatient {
+  display: flex;
+  align-items: center;
+}
+.exam .left .exampatient .img {
+  border: 1px solid black;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #d9e7ed;
+}
+.exam .right {
+  display: flex;
+  align-items: center;
 }/*# sourceMappingURL=global.css.map */

@@ -46,6 +46,16 @@ p {
   width: 75vw;
 }
 
+.appointments {
+  background-color: rgba(217, 231, 237, 0.3);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  width: 75vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .credits {
   position: fixed;
   bottom: 1rem;
@@ -74,7 +84,10 @@ p {
 @import './../components/Heading6/heading6';
 @import './../components/PatientInfo/patientinfo';
 @import './../components/PatientExams/patientexams';
+@import './../components/ExamsHeader/examsheader';
 
 @import './../containers/Dashboard/dashboard';
 @import './../containers/PatientList/patientlist';
 @import './../containers/Patient/patient';
+@import './../containers/LatestApp/latestapp';
+@import './../containers/AllExams/allexams';

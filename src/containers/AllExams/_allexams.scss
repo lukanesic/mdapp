@@ -1,0 +1,60 @@
+.allexams {
+  border: 1px solid black;
+  background-color: #fff;
+
+  .allexams-container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    padding: 0rem 2rem;
+    border: 1px solid green;
+    height: 270px;
+    overflow: scroll;
+  }
+}
+
+// Test
+// Ako ispadne dobro ima svoju komponentu
+
+.allexams-small-header {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  padding: 0rem 2rem;
+
+  .examsinfo {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid red;
+  }
+}
+
+// Test
+.exam {
+  border: 1px solid blue;
+  display: flex;
+  justify-content: space-between;
+
+  .left {
+    border: 1px solid brown;
+
+    display: flex;
+    align-items: center;
+
+    .exampatient {
+      display: flex;
+      align-items: center;
+
+      .img {
+        border: 1px solid black;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: $sidemenu-blue;
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+  }
+}

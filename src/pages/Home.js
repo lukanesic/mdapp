@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Dashboard from './../containers/Dashboard'
 import Patients from '../layouts/Patients'
 import Appointments from '../layouts/Appointments'
+import { AnimatePresence } from 'framer-motion'
 
 const Home = () => {
   const [dashboard, setDashboard] = useState('patients')
@@ -11,9 +12,13 @@ const Home = () => {
     <div className='home'>
       <Dashboard dashboard={dashboard} setDashboard={setDashboard} />
 
-      {dashboard === 'patients' && <Patients />}
+      <AnimatePresence>
+        {dashboard === 'patients' && <Patients />}
+      </AnimatePresence>
 
-      {dashboard === 'appointments' && <Appointments />}
+      <AnimatePresence>
+        {dashboard === 'appointments' && <Appointments />}
+      </AnimatePresence>
     </div>
   )
 }

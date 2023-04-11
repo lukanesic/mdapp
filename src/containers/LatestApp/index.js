@@ -1,12 +1,7 @@
 import React from 'react'
+import Heading2 from '../../components/Heading2'
 import PatientCard from '../../components/PatientCard'
 
-import Heading2 from './../../components/Heading2'
-import Search from './../../components/Seach'
-
-import { motion } from 'framer-motion'
-
-// test data
 const patients = [
   {
     name: 'Alcie McKenzie',
@@ -59,53 +54,13 @@ const patients = [
   },
 ]
 
-const container = {
-  initial: { opacity: 0 },
-  animate: {
-    opacity: 1,
-    transition: { delayChildren: 3.5, staggerChildren: 0.4 },
-  },
-}
-
-const item = {
-  initial: { scale: 0.98, y: 10, opacity: 0 },
-  animate: {
-    scale: 1,
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 1,
-    },
-  },
-}
-
-const PatientList = () => {
+const LatestApp = () => {
   return (
-    <motion.div
-      className='patientlist'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 3, duration: 1.5 }}
-      exit={{ opacity: 0, transition: { duration: 1 } }}
-    >
-      <motion.div
-        className='patientlist-top'
-        initial={{ y: 10, scale: 0.98, opacity: 0 }}
-        animate={{ y: 0, scale: 1, opacity: 1 }}
-        transition={{ delay: 3.2, duration: 1.5 }}
-      >
-        <Heading2 text={'Patients'} />
-        <Search cls={'light'} placeholder={'Search by name'} />
-      </motion.div>
-
-      <motion.div
-        className='patientlist-list'
-        variants={container}
-        initial='initial'
-        animate='animate'
-      >
+    <div className='latest-app'>
+      <Heading2 text={'Latest Appointments'} />
+      <div className='latest'>
         {patients.map((patient, index) => (
-          <motion.div variants={item}>
+          <div className='add-margin-on-card'>
             <PatientCard
               key={patient.id}
               name={patient.name}
@@ -113,11 +68,11 @@ const PatientList = () => {
               profile={patient.profile}
               index={index}
             />
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   )
 }
 
-export default PatientList
+export default LatestApp

@@ -1,0 +1,13 @@
+.latest-app {
+  border: 1px solid blue;
+
+  .latest {
+    padding: 2rem 0 0.5rem;
+    display: flex;
+    overflow-y: scroll;
+
+    .add-margin-on-card {
+      margin-right: 2rem;
+    }
+  }
+}

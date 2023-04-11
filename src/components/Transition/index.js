@@ -9,8 +9,8 @@ const Transition = () => {
       animate={{ backgroundColor: '#01a1c8', right: '110vw' }}
       transition={{
         delay: 2,
-        type: 'spring',
-        stiffness: 10,
+        ease: [0.43, 0.13, 0.23, 0.96],
+        duration: 3,
       }}
     />
   )
