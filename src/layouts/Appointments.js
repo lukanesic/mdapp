@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import LatestApp from '../containers/LatestApp'
 import AllExams from '../containers/AllExams'
 
-const Appointments = () => {
+const Appointments = ({ open, setOpen }) => {
   return (
     <motion.div
       initial={{ opacity: 0, display: 'none' }}
@@ -17,7 +17,7 @@ const Appointments = () => {
       className='appointments'
     >
       <LatestApp />
-      <AllExams />
+      <AllExams open={open} setOpen={setOpen} />
     </motion.div>
   )
 }

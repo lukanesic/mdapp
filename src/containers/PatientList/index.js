@@ -9,10 +9,10 @@ import { motion } from 'framer-motion'
 // test data
 const patients = [
   {
-    name: 'Alcie McKenzie',
-    email: 'mcenzie@gmail.com',
+    name: 'Islam Makhachev',
+    email: 'islam@gmail.com',
     profile:
-      'https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      'https://a.espncdn.com/combiner/i?img=/i/headshots/mma/players/full/3332412.png&w=350&h=254',
     id: '1',
   },
   {
@@ -23,10 +23,9 @@ const patients = [
     id: '2',
   },
   {
-    name: 'Jovana Jeremic',
-    email: 'debil@gmail.com',
-    profile:
-      'https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+    name: 'Charles Oliveira',
+    email: 'oliveira@gmail.com',
+    profile: 'https://a.espncdn.com/i/headshots/mma/players/full/2504169.png',
     id: '3',
   },
   {
@@ -37,25 +36,17 @@ const patients = [
     id: '4',
   },
   {
-    name: 'Jovana Jeremic',
-    email: 'debil@gmail.com',
-    profile:
-      'https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+    name: 'Conor McGregor',
+    email: 'conor@gmail.com',
+    profile: 'https://a.espncdn.com/i/headshots/mma/players/full/3022677.png',
     id: '5',
   },
   {
-    name: 'Jovana Jeremic',
-    email: 'debil@gmail.com',
+    name: 'Khabib Nurmagomedov',
+    email: 'khabib@gmail.com',
     profile:
-      'https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
-    id: '6',
-  },
-  {
-    name: 'Jovana Jeremic',
-    email: 'debil@gmail.com',
-    profile:
-      'https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
-    id: '7',
+      'https://a.espncdn.com/combiner/i?img=/i/headshots/mma/players/full/2611557.png&w=350&h=254',
+    id: '5',
   },
 ]
 

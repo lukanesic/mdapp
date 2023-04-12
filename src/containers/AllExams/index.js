@@ -1,7 +1,8 @@
 import React from 'react'
 import ExamsHeader from '../../components/ExamsHeader'
+import Btn from './../../components/Btn'
 
-const AllExams = () => {
+const AllExams = ({ open, setOpen }) => {
   return (
     <div className='allexams'>
       <ExamsHeader />
@@ -12,15 +13,42 @@ const AllExams = () => {
       </div>
 
       <div className='allexams-container'>
-        <Exam />
-        <Exam />
-        <Exam />
-        <Exam />
-        <Exam />
-        <Exam />
-        <Exam />
-        <Exam />
-        <Exam />
+        <Exam
+          name={'Charles Oliveira'}
+          img={'https://a.espncdn.com/i/headshots/mma/players/full/2504169.png'}
+          email={'oliveira@gmail.com'}
+          EID={'2ate313'}
+          date={'03.03.2023'}
+          open={open}
+          setOpen={setOpen}
+        />
+        <Exam
+          name={'Charles Oliveira'}
+          img={'https://a.espncdn.com/i/headshots/mma/players/full/2504169.png'}
+          email={'oliveira@gmail.com'}
+          EID={'2ate313'}
+          date={'03.03.2023'}
+          open={open}
+          setOpen={setOpen}
+        />
+        <Exam
+          name={'Charles Oliveira'}
+          img={'https://a.espncdn.com/i/headshots/mma/players/full/2504169.png'}
+          email={'oliveira@gmail.com'}
+          EID={'2ate313'}
+          date={'03.03.2023'}
+          open={open}
+          setOpen={setOpen}
+        />
+        <Exam
+          name={'Charles Oliveira'}
+          img={'https://a.espncdn.com/i/headshots/mma/players/full/2504169.png'}
+          email={'oliveira@gmail.com'}
+          EID={'2ate313'}
+          date={'03.03.2023'}
+          open={open}
+          setOpen={setOpen}
+        />
         {/* <ExamsInfo /> */}
       </div>
     </div>
@@ -34,35 +62,32 @@ export default AllExams
 const ExamsInfo = () => {
   return (
     <div className='examsinfo'>
-      <div className='left'>
-        <span>ExaminationID</span>
-        <span>Patient</span>
-      </div>
-      <div className='right'>
-        <span>Date</span>
-        <span>Details</span>
-      </div>
+      <span>EID</span>
+      <span>Patient</span>
+
+      <span>Date</span>
     </div>
   )
 }
 
-const Exam = () => {
+const Exam = ({ EID, img, name, email, date, open, setOpen }) => {
   return (
-    <div className='exam'>
-      <div className='left'>
-        <div className='examid'>124124124</div>
-        <div className='exampatient'>
-          <div className='img'></div>
-          <div className='info'>
-            <h5>Alice Mcenzie</h5>
-            <h6>@gmail.com</h6>
-          </div>
+    <div className='exam' onClick={() => setOpen(!open)}>
+      <div className='examid'>
+        <span>{EID}</span>
+      </div>
+      <div className='exampatient'>
+        <div className='img'>
+          <img src={img} alt={name} className='exam-profile' />
+        </div>
+        <div className='info'>
+          <h5>{name}</h5>
+          <h6>{email}</h6>
         </div>
       </div>
 
-      <div className='right'>
-        <div className='date'>2.2.2032</div>
-        <button>Dick whistler</button>
+      <div className='date'>
+        <span>{date}</span>
       </div>
     </div>
   )

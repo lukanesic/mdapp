@@ -22,24 +22,24 @@ const PatientInfo = ({ patient }) => {
         >
           <div className='left'>
             <img
-              src='https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+              src='https://a.espncdn.com/i/headshots/mma/players/full/3022677.png'
               alt=''
             />
           </div>
           <div className='right'>
-            <Heading2 text={'Djinajlou Ali'} color={'#fff'} />
+            <Heading2 text={'Conor McGregor'} color={'#fff'} />
             <ul>
               <li>
                 Phone: <span>+5352351433</span>
               </li>
               <li>
-                Email: <span>alicemcenze@gmail.com</span>
+                Email: <span>conor@gmail.com</span>
               </li>
               <li>
                 Patient ID: <span>3411351</span>
               </li>
               <li>
-                Birth Date: <span>31.12.2011</span>
+                Birth Date: <span>31.12.1988</span>
               </li>
             </ul>
             <Btn

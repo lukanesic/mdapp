@@ -4,10 +4,10 @@ import PatientCard from '../../components/PatientCard'
 
 const patients = [
   {
-    name: 'Alcie McKenzie',
-    email: 'mcenzie@gmail.com',
+    name: 'Islam Makhachev',
+    email: 'islam@gmail.com',
     profile:
-      'https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      'https://a.espncdn.com/combiner/i?img=/i/headshots/mma/players/full/3332412.png&w=350&h=254',
     id: '1',
   },
   {
@@ -18,46 +18,17 @@ const patients = [
     id: '2',
   },
   {
-    name: 'Jovana Jeremic',
-    email: 'debil@gmail.com',
-    profile:
-      'https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+    name: 'Charles Oliveira',
+    email: 'oliveira@gmail.com',
+    profile: 'https://a.espncdn.com/i/headshots/mma/players/full/2504169.png',
     id: '3',
-  },
-  {
-    name: 'Jovana Jeremic',
-    email: 'debil@gmail.com',
-    profile:
-      'https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
-    id: '4',
-  },
-  {
-    name: 'Jovana Jeremic',
-    email: 'debil@gmail.com',
-    profile:
-      'https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
-    id: '5',
-  },
-  {
-    name: 'Jovana Jeremic',
-    email: 'debil@gmail.com',
-    profile:
-      'https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
-    id: '6',
-  },
-  {
-    name: 'Jovana Jeremic',
-    email: 'debil@gmail.com',
-    profile:
-      'https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
-    id: '7',
   },
 ]
 
 const LatestApp = () => {
   return (
     <div className='latest-app'>
-      <Heading2 text={'Latest Appointments'} />
+      <Heading2 text={'New Appointments'} />
       <div className='latest'>
         {patients.map((patient, index) => (
           <div className='add-margin-on-card'>

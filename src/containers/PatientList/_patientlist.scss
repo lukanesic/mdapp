@@ -1,9 +1,11 @@
 .patientlist {
   width: 40%;
   background-color: rgba(217, 231, 237, 0.3);
-  height: 100vh;
+  height: inherit;
+  // max-height: 820px;
   padding: 2rem;
   overflow-y: scroll;
+  height: 100%;
 
   .patientlist-top {
     display: flex;
