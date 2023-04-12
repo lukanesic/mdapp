@@ -35,7 +35,7 @@ p {
   margin: 0 auto;
   display: flex;
   height: 100%;
-  border: 2px solid #1b4476;
+  border: 2px solid #01a1c8;
   border-radius: 10px;
   min-height: 820px;
   max-height: 820px;
@@ -66,11 +66,15 @@ p {
   font-size: 0.8rem;
   color: #1b4476;
   font-weight: 300;
-  z-index: 1100;
+  z-index: 2100;
 }
 .credits span {
   font-weight: 600;
   cursor: pointer;
+}
+
+.space-div {
+  height: 20px;
 }
 
 .login-form {
@@ -127,6 +131,21 @@ p {
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.4s ease;
+}
+
+.large {
+  margin: 2rem 0;
+  padding: 1rem 2.3rem;
+  width: 80%;
+  font-size: 1rem;
+  background-color: #01a1c8;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.large:hover {
+  background-color: #074c6f;
 }
 
 .delete-btn {
@@ -295,7 +314,7 @@ p {
   border-radius: 50%;
   width: 100%;
   height: 100%;
-  border: 0.5px solid #01a1c8;
+  background-color: #d9e7ed;
 }
 .patientcard .profile-container .circle {
   height: 100%;
@@ -331,14 +350,6 @@ p {
   background-color: rgb(1, 161, 200);
   width: 100%;
   padding: 1rem 0rem;
-}
-.patientinfo .icon {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  font-size: 1.2rem;
-  color: #fff;
-  cursor: pointer;
 }
 .patientinfo .patient-info-box {
   padding: 2rem;
@@ -412,14 +423,12 @@ p {
   z-index: 1000;
 }
 
-.rmenu {
+.icon {
   position: absolute;
-  width: 500px;
-  height: 100%;
-  top: 0;
-  right: 0;
-  background-color: rgba(255, 255, 255, 0.85);
-  z-index: 1500;
+  top: 2rem;
+  right: 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .dashboard {
@@ -595,10 +604,36 @@ p {
   background-color: rgba(217, 231, 237, 0.5);
 }
 
-.exam:last-child {
+.exam:nth-last-child(-n+2) {
   border-bottom: none;
 }
 
-.exam:last-child(2) {
-  border-bottom: none;
+.lmenu {
+  width: 25%;
+  background-color: rgba(255, 255, 255, 0.85);
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: 1500;
+  padding: 4rem 2rem;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+
+.rmenu {
+  position: absolute;
+  width: 700px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1500;
+  padding: 2rem;
+  display: grid;
+  place-content: center;
+  font-size: 1.5rem;
+  letter-spacing: -1px;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
 }/*# sourceMappingURL=global.css.map */

@@ -49,6 +49,15 @@ const AllExams = ({ open, setOpen }) => {
           open={open}
           setOpen={setOpen}
         />
+        <Exam
+          name={'Charles Oliveira'}
+          img={'https://a.espncdn.com/i/headshots/mma/players/full/2504169.png'}
+          email={'oliveira@gmail.com'}
+          EID={'2ate313'}
+          date={'03.03.2023'}
+          open={open}
+          setOpen={setOpen}
+        />
         {/* <ExamsInfo /> */}
       </div>
     </div>

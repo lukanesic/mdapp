@@ -17,7 +17,12 @@ const RMenu = () => {
       }}
       transition={{ duration: 0.5, delay: 0.3 }}
     >
-      RMenu
+      <p>
+        Nadji neko resenje koje podrazumeva re-usable komponentu. Ako ne mozes
+        da iskoristis PatientInfo komponentu, napravi novu. Na kraju krajeva
+        ovde se pregleda samo sta pise u examinaciji. Mozes to i na drugaciji
+        nacin da napravis u odnosu na PatientInfo.
+      </p>
     </motion.div>
   )
 }

@@ -5,11 +5,12 @@ import Btn from './../Btn'
 import { AiOutlineClose } from 'react-icons/ai'
 
 import { motion } from 'framer-motion'
+import CloseIcon from '../CloseIcon'
 
 const PatientInfo = ({ patient }) => {
   return (
     <div className='patientinfo'>
-      <AiOutlineClose className='icon' />
+      <CloseIcon onClick={() => console.log('zatvori ovo')} />
 
       {!patient && <Placeholders />}
 

@@ -122,10 +122,10 @@
 //   border-right: 1px solid $text-lightblue;
 // }
 
-.exam:last-child {
-  border-bottom: none;
-}
+// .exam:last-child {
+//   border-bottom: none;
+// }
 
-.exam:last-child(2) {
+.exam:nth-last-child(-n + 2) {
   border-bottom: none;
 }

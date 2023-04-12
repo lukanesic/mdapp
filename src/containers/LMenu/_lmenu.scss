@@ -1,0 +1,11 @@
+.lmenu {
+  width: 25%;
+  background-color: rgba(255, 255, 255, 0.85);
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: 1500;
+  padding: 4rem 2rem;
+  backdrop-filter: blur(5px);
+}

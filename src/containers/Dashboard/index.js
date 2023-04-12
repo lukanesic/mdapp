@@ -8,7 +8,13 @@ import { MdPostAdd } from 'react-icons/md'
 
 import { motion } from 'framer-motion'
 
-const Dashboard = ({ dashboard, setDashboard }) => {
+const Dashboard = ({
+  dashboard,
+  setDashboard,
+  openLMenu,
+  setOpenLMenu,
+  setAddForm,
+}) => {
   return (
     <motion.div
       className='dashboard'
@@ -36,10 +42,26 @@ const Dashboard = ({ dashboard, setDashboard }) => {
             </span>
           </li>
           <li>
-            <HiUserAdd /> <span>Add Patient</span>
+            <HiUserAdd />{' '}
+            <span
+              onClick={() => {
+                setOpenLMenu(!openLMenu)
+                setAddForm('patient')
+              }}
+            >
+              Add Patient
+            </span>
           </li>
           <li>
-            <MdPostAdd /> <span>Add Appointment</span>
+            <MdPostAdd />{' '}
+            <span
+              onClick={() => {
+                setOpenLMenu(!openLMenu)
+                setAddForm('appointment')
+              }}
+            >
+              Add Appointment
+            </span>
           </li>
           <li>Logout</li>
         </ul>

@@ -45,7 +45,7 @@ p {
   margin: 0 auto;
   display: flex;
   height: 100%;
-  border: 2px solid $text-dark;
+  border: 2px solid $text-blue;
   border-radius: 10px;
   min-height: 820px;
   max-height: 820px;
@@ -77,12 +77,16 @@ p {
   font-size: 0.8rem;
   color: #1b4476;
   font-weight: 300;
-  z-index: 1100;
+  z-index: 2100;
 
   span {
     font-weight: 600;
     cursor: pointer;
   }
+}
+
+.space-div {
+  height: 20px;
 }
 
 @import './../components/LoginForm/loginform';
@@ -100,10 +104,12 @@ p {
 @import './../components/PatientExams/patientexams';
 @import './../components/ExamsHeader/examsheader';
 @import './../components/Overlay/overlay';
-@import './../components/RMenu/rmenu';
+@import './../components/CloseIcon/closeicon';
 
 @import './../containers/Dashboard/dashboard';
 @import './../containers/PatientList/patientlist';
 @import './../containers/Patient/patient';
 @import './../containers/LatestApp/latestapp';
 @import './../containers/AllExams/allexams';
+@import './../containers/LMenu/lmenu';
+@import './../containers/RMenu/rmenu';
