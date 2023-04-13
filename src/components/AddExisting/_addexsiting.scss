@@ -1,0 +1,9 @@
+.existingpatient-list {
+  overflow: scroll;
+  height: 500px;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: space-between;
+  grid-gap: 1rem;
+}

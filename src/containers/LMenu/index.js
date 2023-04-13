@@ -1,10 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import Heading2 from '../../components/Heading2'
-import Paragraph from '../../components/Paragraph'
-import Btn from '../../components/Btn'
 
 import CloseIcon from './../../components/CloseIcon'
+import SelectAppointmentType from '../SelectAppointmentType'
+import NewPatient from '../NewPatient'
 
 const LMenu = ({ form, openMenu, setOpen }) => {
   return (
@@ -24,31 +23,12 @@ const LMenu = ({ form, openMenu, setOpen }) => {
     >
       <CloseIcon onClick={() => setOpen(!openMenu)} color={'#01a1c8'} />
 
-      {form === 'patient' && (
-        <>
-          <h1>Patient</h1>
-        </>
+      {form === 'patient' && <NewPatient />}
+      {form === 'appointment' && (
+        <SelectAppointmentType setOpen={setOpen} open={openMenu} />
       )}
-      {form === 'appointment' && <AppointmentForm />}
     </motion.div>
   )
 }
 
 export default LMenu
-
-const AppointmentForm = () => {
-  return (
-    <div className='appointment-form'>
-      <Heading2 text={'Add new appointment'} />
-      <div className='space-div' />
-      <Paragraph
-        text={
-          'Add new appointment for exisinting patient, or create new pateint and then add appointment'
-        }
-      />
-
-      <Btn cls={'large'} title={'Existing patient'} />
-      <Btn cls={'large'} title={'New patient'} />
-    </div>
-  )
-}

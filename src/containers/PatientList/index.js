@@ -103,6 +103,7 @@ const PatientList = () => {
               subtitle={patient.email}
               profile={patient.profile}
               index={index}
+              btnText={'View patient'}
             />
           </motion.div>
         ))}

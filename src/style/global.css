@@ -328,6 +328,14 @@ p {
   text-align: center;
 }
 
+.small-card {
+  width: 160px;
+}
+.small-card .profile-container {
+  width: 70px;
+  height: 70px;
+}
+
 .heading3 {
   color: #1a80b3;
   font-weight: 300;
@@ -429,6 +437,108 @@ p {
   right: 2rem;
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+.backicon {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #01a1c8;
+}
+
+.existingpatient-list {
+  overflow: scroll;
+  height: 500px;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: space-between;
+  grid-gap: 1rem;
+}
+
+.selected-info {
+  margin-top: 3rem;
+  color: rgb(26, 128, 179);
+}
+.selected-info h2 {
+  font-size: 2.2rem;
+  letter-spacing: -1px;
+  font-weight: 500;
+}
+.selected-info p {
+  margin: 0.5rem 0;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+.selected-info h4 {
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+.selected-info h4 span {
+  font-weight: 500;
+}
+
+.fill-form {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  height: 60px;
+}
+.fill-form .inputs {
+  display: flex;
+  justify-content: space-between;
+}
+.fill-form .inputs input {
+  border: none;
+  background-color: transparent;
+  width: 100px;
+  outline: none;
+  font-size: 2.5rem;
+  border-bottom: 1px solid #01a1c8;
+  text-align: center;
+  color: rgb(26, 128, 179);
+}
+.fill-form .inputs input::-moz-placeholder {
+  color: rgba(26, 128, 179, 0.6);
+}
+.fill-form .inputs input::placeholder {
+  color: rgba(26, 128, 179, 0.6);
+}
+.fill-form .success {
+  display: flex;
+  align-items: center;
+}
+.fill-form .success img {
+  margin-right: 1rem;
+}
+.fill-form .success span {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: -1px;
+  color: rgb(26, 128, 179);
+}
+
+.form {
+  margin: 3rem 0 1.5rem;
+}
+.form label {
+  font-size: 1.3rem;
+  letter-spacing: -0.2px;
+  color: rgb(26, 128, 179);
+  font-weight: 200;
+}
+.form input {
+  width: 100%;
+  margin-bottom: 1rem;
+  outline: none;
+  padding: 0.5rem;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid rgb(26, 128, 179);
+  font-size: 1rem;
+  color: rgb(26, 128, 179);
+  letter-spacing: -0.2px;
 }
 
 .dashboard {

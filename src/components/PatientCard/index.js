@@ -5,9 +5,17 @@ import Btn from './../Btn'
 
 import { motion } from 'framer-motion'
 
-const PatientCard = ({ name, subtitle, btnText, profile, index }) => {
+const PatientCard = ({
+  name,
+  subtitle,
+  btnText,
+  profile,
+  index,
+  cls,
+  onClick,
+}) => {
   return (
-    <motion.div className='patientcard'>
+    <motion.div className={`patientcard ${cls && cls}`}>
       <div className='profile-container'>
         <img src={profile} alt={name} className='profile' />
         <div className='circle' />
@@ -17,7 +25,7 @@ const PatientCard = ({ name, subtitle, btnText, profile, index }) => {
         <Heading3 text={name} />
         <Heading6 text={subtitle} />
       </div>
-      <Btn onClick={'hey'} title={'View Patient'} cls={'patient-btn'} />
+      <Btn onClick={onClick} title={btnText} cls={'patient-btn'} />
     </motion.div>
   )
 }

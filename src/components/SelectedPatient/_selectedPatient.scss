@@ -1,0 +1,68 @@
+.selected-info {
+  margin-top: 3rem;
+  color: rgba(26, 128, 179, 1);
+
+  h2 {
+    font-size: 2.2rem;
+    letter-spacing: -1px;
+
+    font-weight: 500;
+  }
+
+  p {
+    margin: 0.5rem 0;
+    font-weight: 300;
+    font-size: 1.2rem;
+  }
+
+  h4 {
+    font-weight: 300;
+    font-size: 1.2rem;
+
+    span {
+      font-weight: 500;
+    }
+  }
+}
+
+.fill-form {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  height: 60px;
+
+  .inputs {
+    display: flex;
+    justify-content: space-between;
+
+    input {
+      border: none;
+      background-color: transparent;
+      width: 100px;
+      outline: none;
+      font-size: 2.5rem;
+      border-bottom: 1px solid $text-blue;
+      text-align: center;
+      color: rgba(26, 128, 179, 1);
+    }
+
+    input::placeholder {
+      color: rgba(26, 128, 179, 0.6);
+    }
+  }
+
+  .success {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 1rem;
+    }
+
+    span {
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: -1px;
+      color: rgba(26, 128, 179, 1);
+    }
+  }
+}
