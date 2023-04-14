@@ -20,7 +20,7 @@ const Dashboard = ({
       className='dashboard'
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: 4, duration: 1.2 }}
+      transition={{ delay: 1.8, duration: 1.2 }}
     >
       <img src='./dash-logo.png' alt='Ulnaris Logo' />
       <div className='welcome-message'>

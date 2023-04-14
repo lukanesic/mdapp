@@ -7,7 +7,7 @@ import Appointments from '../layouts/Appointments'
 
 import Overlay from '../components/Overlay'
 
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import RMenu from '../menus/RMenu'
 import LMenu from '../menus/LMenu'
 
@@ -23,7 +23,12 @@ const Home = () => {
   const [overview, setOverview] = useState('')
 
   return (
-    <div className='home'>
+    <motion.div
+      className='home'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.5, delay: 1 }}
+    >
       <Dashboard
         dashboard={dashboard}
         setDashboard={setDashboard}
@@ -32,14 +37,12 @@ const Home = () => {
         setAddForm={setAddForm}
       />
 
-      <AnimatePresence>
-        {dashboard === 'patients' && <Patients />}
-      </AnimatePresence>
+      <AnimatePresence mode='wait'>
+        {dashboard === 'patients' && <Patients key={'patients'} />}
 
-      {/* Ovde saljem state u druge komponente kako bi otvarao na click */}
-      <AnimatePresence>
         {dashboard === 'appointments' && (
           <Appointments
+            key={'appointments'}
             open={openRMenu}
             setOpen={setOpenRMenu}
             overview={overview}
@@ -47,6 +50,22 @@ const Home = () => {
           />
         )}
       </AnimatePresence>
+
+      {/* <AnimatePresence>
+        {dashboard === 'patients' && <Patients key={'patients'} />}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {dashboard === 'appointments' && (
+          <Appointments
+            key={'appointments'}
+            open={openRMenu}
+            setOpen={setOpenRMenu}
+            overview={overview}
+            setOverview={setOverview}
+          />
+        )}
+      </AnimatePresence> */}
 
       {/* ovde otvaram i zatvaram RMenu */}
       <AnimatePresence>
@@ -71,7 +90,7 @@ const Home = () => {
           </>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   )
 }
 

@@ -19,7 +19,7 @@ const PatientInfo = ({ patient }) => {
           className='patient-info-box'
           initial={{ y: 10, scale: 0.98, opacity: 0 }}
           animate={{ y: 0, scale: 1, opacity: 1 }}
-          transition={{ delay: 3, duration: 1.5 }}
+          transition={{ delay: 0.2, duration: 1 }}
         >
           <div className='left'>
             <img

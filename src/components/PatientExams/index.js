@@ -9,19 +9,22 @@ import Btn from '../Btn'
 const PatientExams = ({ exams }) => {
   return (
     <>
-      <div className='patientexams'>
-        <Heading2 text={'Examinations'} />
-        <div className='space-div' />
+      {exams && (
+        <div className='patientexams'>
+          <Heading2 text={'Examinations'} />
+          <div className='space-div' />
 
-        {/* ako postoji exams,mapiram ih */}
-        <div className='patientexams-container'>
-          {[0, 1, 2, 3, 4, 5, 6].map((exam, index) => (
-            <AllPatientExaminations />
-          ))}
+          {/* ako postoji exams,mapiram ih */}
+          <div className='patientexams-container'>
+            {[0, 1, 2, 3, 4, 5, 6].map((exam, index) => (
+              <AllPatientExaminations />
+            ))}
+          </div>
+
+          {/* ako ne postoji, prikazujem placeholder */}
         </div>
+      )}
 
-        {/* ako ne postoji, prikazujem placeholder */}
-      </div>
       {!exams && <Placeholders />}
     </>
   )
@@ -48,7 +51,7 @@ const Placeholders = () => {
       className='placeholders'
       initial={{ y: 10, scale: 0.98, opacity: 0 }}
       animate={{ y: 0, scale: 1, opacity: 1 }}
-      transition={{ delay: 3, duration: 1.5 }}
+      transition={{ delay: 0.2, duration: 1 }}
     >
       <img src='./dash-logo.png' alt='Ulnaris' />
       <Heading1 title={'Select Patient'} />

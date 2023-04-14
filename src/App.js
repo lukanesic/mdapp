@@ -10,15 +10,13 @@ const App = () => {
 
   return (
     <>
-      <AnimatePresence>
-        {!isEntered && <Login setIsEntered={setIsEntered} />}
-      </AnimatePresence>
+      <AnimatePresence mode='wait'>
+        {!isEntered && <Login setIsEntered={setIsEntered} key={'login'} />}
 
-      <AnimatePresence>
         {isEntered && (
           <>
-            <Transition />
-            <Home />
+            <Transition key={'transition'} />
+            <Home key={'transition'} />
           </>
         )}
       </AnimatePresence>

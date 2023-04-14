@@ -8,11 +8,11 @@ const Appointments = ({ open, setOpen, overview, setOverview }) => {
     <motion.div
       initial={{ opacity: 0, display: 'none' }}
       animate={{ opacity: 1, display: 'block' }}
-      transition={{ delay: 1.5, duration: 1 }}
+      transition={{ duration: 0.7 }}
       exit={{
-        display: 'none',
         opacity: 0,
-        transition: { duration: 1 },
+
+        transition: { delay: 0.3 },
       }}
       className='appointments'
     >

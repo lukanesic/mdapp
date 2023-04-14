@@ -54,7 +54,7 @@ const container = {
   initial: { opacity: 0 },
   animate: {
     opacity: 1,
-    transition: { delayChildren: 3.5, staggerChildren: 0.4 },
+    transition: { delayChildren: 0.1, staggerChildren: 0.1 },
   },
 }
 
@@ -72,19 +72,8 @@ const item = {
 
 const PatientList = () => {
   return (
-    <motion.div
-      className='patientlist'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 3, duration: 1.5 }}
-      exit={{ opacity: 0, transition: { duration: 1 } }}
-    >
-      <motion.div
-        className='patientlist-top'
-        initial={{ y: 10, scale: 0.98, opacity: 0 }}
-        animate={{ y: 0, scale: 1, opacity: 1 }}
-        transition={{ delay: 3.2, duration: 1.5 }}
-      >
+    <motion.div className='patientlist'>
+      <motion.div className='patientlist-top'>
         <Heading2 text={'Patients'} />
         <Search cls={'light'} placeholder={'Search by name'} />
       </motion.div>
