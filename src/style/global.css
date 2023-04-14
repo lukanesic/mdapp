@@ -718,13 +718,69 @@ p {
   border-bottom: none;
 }
 
+.patient-from-appointment {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.patient-from-appointment-info {
+  height: 30%;
+  width: 100%;
+}
+.patient-from-appointment-info .patient-from-appointment-box {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+}
+.patient-from-appointment-info .patient-from-appointment-box .left {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  margin-right: 2rem;
+  background-color: #fff;
+  border: 1px solid #01a1c8;
+}
+.patient-from-appointment-info .patient-from-appointment-box .left img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+.patient-from-appointment-info .patient-from-appointment-box .right {
+  color: rgb(26, 128, 179);
+}
+.patient-from-appointment-info .patient-from-appointment-box .right ul {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  margin: 1rem 0 0rem;
+}
+.patient-from-appointment-info .patient-from-appointment-box .right ul li {
+  list-style-type: none;
+  margin: 0.5rem 0;
+  font-weight: 400;
+  letter-spacing: -0.25px;
+  margin-right: 2rem;
+}
+.patient-from-appointment-info .patient-from-appointment-box .right ul li span {
+  font-weight: 200;
+}
+
+.patient-from-appointment-exam {
+  height: 70%;
+  width: 100%;
+  overflow: scroll;
+}
+
 .lmenu {
   width: 25%;
   background-color: rgba(255, 255, 255, 0.85);
   position: absolute;
   height: 100%;
   top: 0;
-  right: 0;
+  left: 0;
   z-index: 1500;
   padding: 4rem 2rem;
   -webkit-backdrop-filter: blur(5px);
@@ -739,11 +795,7 @@ p {
   right: 0;
   background-color: rgba(255, 255, 255, 0.8);
   z-index: 1500;
-  padding: 2rem;
-  display: grid;
-  place-content: center;
-  font-size: 1.5rem;
-  letter-spacing: -1px;
+  padding: 4rem 2rem 2rem;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
 }/*# sourceMappingURL=global.css.map */

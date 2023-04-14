@@ -1,8 +1,9 @@
 import React from 'react'
 import ExamsHeader from '../../components/ExamsHeader'
-import Btn from './../../components/Btn'
 
-const AllExams = ({ open, setOpen }) => {
+// NAPRAVI POSEBNE FILE-OVE ZA OVE DOLE KOMPONENTE!!!
+
+const AllExams = ({ open, setOpen, overview, setOverview }) => {
   return (
     <div className='allexams'>
       <ExamsHeader />
@@ -21,7 +22,10 @@ const AllExams = ({ open, setOpen }) => {
           date={'03.03.2023'}
           open={open}
           setOpen={setOpen}
+          overview={overview}
+          setOverview={setOverview}
         />
+
         <Exam
           name={'Charles Oliveira'}
           img={'https://a.espncdn.com/i/headshots/mma/players/full/2504169.png'}
@@ -30,7 +34,10 @@ const AllExams = ({ open, setOpen }) => {
           date={'03.03.2023'}
           open={open}
           setOpen={setOpen}
+          overview={overview}
+          setOverview={setOverview}
         />
+
         <Exam
           name={'Charles Oliveira'}
           img={'https://a.espncdn.com/i/headshots/mma/players/full/2504169.png'}
@@ -39,24 +46,8 @@ const AllExams = ({ open, setOpen }) => {
           date={'03.03.2023'}
           open={open}
           setOpen={setOpen}
-        />
-        <Exam
-          name={'Charles Oliveira'}
-          img={'https://a.espncdn.com/i/headshots/mma/players/full/2504169.png'}
-          email={'oliveira@gmail.com'}
-          EID={'2ate313'}
-          date={'03.03.2023'}
-          open={open}
-          setOpen={setOpen}
-        />
-        <Exam
-          name={'Charles Oliveira'}
-          img={'https://a.espncdn.com/i/headshots/mma/players/full/2504169.png'}
-          email={'oliveira@gmail.com'}
-          EID={'2ate313'}
-          date={'03.03.2023'}
-          open={open}
-          setOpen={setOpen}
+          overview={overview}
+          setOverview={setOverview}
         />
         {/* <ExamsInfo /> */}
       </div>
@@ -79,9 +70,24 @@ const ExamsInfo = () => {
   )
 }
 
-const Exam = ({ EID, img, name, email, date, open, setOpen }) => {
+const Exam = ({
+  EID,
+  img,
+  name,
+  email,
+  date,
+  open,
+  setOpen,
+  overview,
+  setOverview,
+}) => {
+  const handleMenu = () => {
+    setOpen(!open)
+    setOverview('exam')
+  }
+
   return (
-    <div className='exam' onClick={() => setOpen(!open)}>
+    <div className='exam' onClick={() => handleMenu()}>
       <div className='examid'>
         <span>{EID}</span>
       </div>

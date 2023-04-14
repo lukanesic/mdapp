@@ -25,7 +25,12 @@ const patients = [
   },
 ]
 
-const LatestApp = () => {
+const LatestApp = ({ open, setOpen, overview, setOverview }) => {
+  const handleMenu = () => {
+    setOpen(!open)
+    setOverview('latest')
+  }
+
   return (
     <div className='latest-app'>
       <Heading2 text={'New Appointments'} />
@@ -39,6 +44,7 @@ const LatestApp = () => {
               profile={patient.profile}
               index={index}
               btnText={'Start Appointment'}
+              onClick={() => handleMenu()}
             />
           </div>
         ))}

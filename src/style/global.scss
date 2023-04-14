@@ -115,5 +115,7 @@ p {
 @import './../containers/Patient/patient';
 @import './../containers/LatestApp/latestapp';
 @import './../containers/AllExams/allexams';
-@import './../containers/LMenu/lmenu';
-@import './../containers/RMenu/rmenu';
+@import './../containers/PatientFromAppointment/patientfromappointment';
+
+@import './../menus/LMenu/lmenu';
+@import './../menus/RMenu/rmenu';

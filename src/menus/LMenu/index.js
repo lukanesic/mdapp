@@ -1,9 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-import CloseIcon from './../../components/CloseIcon'
-import SelectAppointmentType from '../SelectAppointmentType'
-import NewPatient from '../NewPatient'
+import CloseIcon from '../../components/CloseIcon'
+import SelectAppointmentType from '../../containers/SelectAppointmentType'
+import NewPatient from './../../containers/NewPatient'
 
 const LMenu = ({ form, openMenu, setOpen }) => {
   return (
@@ -23,7 +23,7 @@ const LMenu = ({ form, openMenu, setOpen }) => {
     >
       <CloseIcon onClick={() => setOpen(!openMenu)} color={'#01a1c8'} />
 
-      {form === 'patient' && <NewPatient />}
+      {form === 'patient' && <NewPatient setOpen={setOpen} open={openMenu} />}
       {form === 'appointment' && (
         <SelectAppointmentType setOpen={setOpen} open={openMenu} />
       )}

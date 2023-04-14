@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 
 import Dashboard from './../containers/Dashboard'
-import RMenu from '../containers/RMenu'
-import LMenu from '../containers/LMenu'
 
 import Patients from '../layouts/Patients'
 import Appointments from '../layouts/Appointments'
@@ -10,12 +8,19 @@ import Appointments from '../layouts/Appointments'
 import Overlay from '../components/Overlay'
 
 import { AnimatePresence } from 'framer-motion'
+import RMenu from '../menus/RMenu'
+import LMenu from '../menus/LMenu'
 
 const Home = () => {
   const [dashboard, setDashboard] = useState('patients')
-  const [openRMenu, setOpenRMenu] = useState(false)
+
+  // LMenu i sta ga otvara
   const [openLMenu, setOpenLMenu] = useState(false)
   const [addForm, setAddForm] = useState('')
+
+  // RMenu i sta ga otvara
+  const [openRMenu, setOpenRMenu] = useState(false)
+  const [overview, setOverview] = useState('')
 
   return (
     <div className='home'>
@@ -31,17 +36,29 @@ const Home = () => {
         {dashboard === 'patients' && <Patients />}
       </AnimatePresence>
 
+      {/* Ovde saljem state u druge komponente kako bi otvarao na click */}
       <AnimatePresence>
         {dashboard === 'appointments' && (
-          <Appointments open={openRMenu} setOpen={setOpenRMenu} />
+          <Appointments
+            open={openRMenu}
+            setOpen={setOpenRMenu}
+            overview={overview}
+            setOverview={setOverview}
+          />
         )}
       </AnimatePresence>
 
+      {/* ovde otvaram i zatvaram RMenu */}
       <AnimatePresence>
         {openRMenu && (
           <>
             <Overlay open={openRMenu} setOpen={setOpenRMenu} />
-            <RMenu />
+            <RMenu
+              overview={overview}
+              setOverview={setOverview}
+              open={openRMenu}
+              setOpen={setOpenRMenu}
+            />
           </>
         )}
       </AnimatePresence>

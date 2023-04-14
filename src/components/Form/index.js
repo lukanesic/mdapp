@@ -1,17 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Btn from '../Btn'
 import { motion } from 'framer-motion'
 
-const Form = ({ funcForNextStep, nextStep }) => {
-  const [isAdded, setIsAdded] = useState(false)
-
-  const funcToContinue = () => {
-    setIsAdded(!isAdded)
-    setTimeout(() => {
-      funcForNextStep(nextStep)
-    }, 3000)
-  }
-
+const Form = ({ funcForNextStep, isAdded, setIsAdded, btnTitle }) => {
   return (
     <>
       {!isAdded && (
@@ -30,11 +21,6 @@ const Form = ({ funcForNextStep, nextStep }) => {
             <label>Personal ID Number</label>
             <input type='text' />
           </div>
-          <Btn
-            title={'Add Patient'}
-            onClick={() => funcToContinue()}
-            cls={'full'}
-          />
         </>
       )}
 
@@ -52,6 +38,14 @@ const Form = ({ funcForNextStep, nextStep }) => {
           </motion.div>
         </div>
       )}
+
+      <Btn
+        title={`${!isAdded ? 'Add Patient' : btnTitle}`}
+        onClick={
+          !isAdded ? () => setIsAdded(!isAdded) : () => funcForNextStep()
+        }
+        cls={'full'}
+      />
     </>
   )
 }
