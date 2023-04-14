@@ -19,7 +19,7 @@ const Patient = () => {
       }}
     >
       <PatientInfo patient />
-      <PatientExams />
+      <PatientExams exams />
     </motion.div>
   )
 }

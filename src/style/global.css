@@ -358,6 +358,7 @@ p {
   background-color: rgb(1, 161, 200);
   width: 100%;
   padding: 1rem 0rem;
+  height: 37%;
 }
 .patientinfo .patient-info-box {
   padding: 2rem;
@@ -399,18 +400,47 @@ p {
 
 .patientexams {
   padding: 2rem;
+  height: 63%;
 }
-.patientexams .placeholders {
+.patientexams .patientexams-container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  align-items: center;
+  height: 87%;
+  overflow: scroll;
+}
+
+.all-patient-exams {
+  background-color: rgba(217, 231, 237, 0.2);
+  height: 200px;
+  margin-bottom: 2rem;
+  width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.all-patient-exams .info-cont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 110px;
+  margin-top: 28px;
+  color: #01a1c8;
+}
+
+.placeholders {
   width: 500px;
   margin-left: 4rem;
   margin-top: 4rem;
 }
-.patientexams .placeholders img {
+.placeholders img {
   width: 200px;
   height: 100px;
   margin-left: -2rem;
 }
-.patientexams .placeholders .empty-div {
+.placeholders .empty-div {
   height: 30px;
 }
 
@@ -600,7 +630,7 @@ p {
 }
 
 .patient {
-  height: 100vh;
+  height: 100%;
   width: 60%;
 }
 

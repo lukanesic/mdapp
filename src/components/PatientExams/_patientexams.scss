@@ -1,18 +1,50 @@
 .patientexams {
   padding: 2rem;
+  height: 63%;
 
-  .placeholders {
-    width: 500px;
-    margin-left: 4rem;
-    margin-top: 4rem;
-    img {
-      width: 200px;
-      height: 100px;
-      margin-left: -2rem;
-    }
+  .patientexams-container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
 
-    .empty-div {
-      height: 30px;
-    }
+    align-items: center;
+    height: 87%;
+    overflow: scroll;
+  }
+}
+
+.all-patient-exams {
+  background-color: rgba(217, 231, 237, 0.2);
+  height: 200px;
+  margin-bottom: 2rem;
+  width: 220px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+
+  .info-cont {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 110px;
+    margin-top: 28px;
+    color: $text-blue;
+  }
+}
+
+.placeholders {
+  width: 500px;
+  margin-left: 4rem;
+  margin-top: 4rem;
+  img {
+    width: 200px;
+    height: 100px;
+    margin-left: -2rem;
+  }
+
+  .empty-div {
+    height: 30px;
   }
 }
