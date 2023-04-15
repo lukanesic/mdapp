@@ -1,0 +1,16 @@
+.exam-menu {
+  height: 100%;
+  width: 100%;
+  z-index: 3000;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1.3rem 2rem 4rem;
+  overflow: scroll;
+  margin: 1rem 0;
+
+  .exam-h {
+    margin-left: 5rem;
+  }
+}

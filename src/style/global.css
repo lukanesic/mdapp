@@ -360,6 +360,7 @@ p {
   width: 100%;
   padding: 1rem 0rem;
   height: 37%;
+  z-index: 2000;
 }
 .patientinfo .patient-info-box {
   padding: 2rem;
@@ -399,16 +400,81 @@ p {
   font-weight: 200;
 }
 
+.placeholders-info {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+}
+.placeholders-info .left {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-right: 2rem;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.placeholders-info .right div {
+  height: 20px;
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+}
+.placeholders-info .right ul {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  margin: 1rem 0 2rem;
+}
+.placeholders-info .right ul li {
+  list-style-type: none;
+  margin: 0.5rem 0;
+  font-weight: 400;
+  letter-spacing: -0.25px;
+  margin-right: 2rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  width: 200px;
+  height: 20px;
+}
+.placeholders-info .right ul li span {
+  font-weight: 200;
+}
+.placeholders-info .right .btn-placeholder {
+  height: 20px;
+  width: 150px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+}
+.placeholders-info .animate {
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.6));
+  background-size: 400% 400%;
+  animation: animeGradients 3s infinite linear;
+}
+@keyframes animeGradients {
+  0% {
+    background-position: 0 85%;
+  }
+  50% {
+    background-position: 100% 20%;
+  }
+  100% {
+    background-position: 0 85%;
+  }
+}
+
 .patientexams {
   padding: 2rem;
   height: 63%;
+  background-color: #fff;
+  width: 100%;
+  z-index: 2000;
+  position: relative;
 }
 .patientexams .patientexams-container {
   display: grid;
   grid-template-columns: repeat(3, auto);
   align-items: center;
-  height: 87%;
+  height: 100%;
   overflow: scroll;
+  z-index: 2000;
 }
 
 .all-patient-exams {
@@ -416,6 +482,7 @@ p {
   height: 200px;
   margin-bottom: 2rem;
   width: 220px;
+  z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -829,4 +896,20 @@ p {
   padding: 4rem 2rem 2rem;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
+}
+
+.exam-menu {
+  height: 100%;
+  width: 100%;
+  z-index: 3000;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1.3rem 2rem 4rem;
+  overflow: scroll;
+  margin: 1rem 0;
+}
+.exam-menu .exam-h {
+  margin-left: 5rem;
 }/*# sourceMappingURL=global.css.map */

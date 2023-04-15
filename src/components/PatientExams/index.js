@@ -2,46 +2,96 @@ import React from 'react'
 import Heading1 from '../Heading1'
 import Paragraph from '../Paragraph'
 
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import Heading2 from '../Heading2'
 import Btn from '../Btn'
+import ExamMenu from '../../menus/ExamMenu'
 
-const PatientExams = ({ exams }) => {
+const container = {
+  initial: { opacity: 0 },
+  animate: {
+    opacity: 1,
+    transition: { delayChildren: 0.1, staggerChildren: 0.1 },
+  },
+}
+
+const item = {
+  initial: { scale: 0.98, y: 10, opacity: 0 },
+  animate: {
+    scale: 1,
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+}
+
+const PatientExams = ({ patient, openExam, setOpenExam }) => {
   return (
-    <>
-      {exams && (
-        <div className='patientexams'>
-          <Heading2 text={'Examinations'} />
-          <div className='space-div' />
-
+    <AnimatePresence mode='wait'>
+      {patient && (
+        <motion.div
+          className='patientexams'
+          key={'patient'}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.2 }}
+          exit={{ opacity: 0 }}
+        >
+          <AnimatePresence>
+            {openExam && (
+              <ExamMenu openExam={openExam} setOpenExam={setOpenExam} />
+            )}
+          </AnimatePresence>
           {/* ako postoji exams,mapiram ih */}
-          <div className='patientexams-container'>
+          <motion.div
+            className='patientexams-container'
+            variants={container}
+            initial='initial'
+            animate='animate'
+          >
             {[0, 1, 2, 3, 4, 5, 6].map((exam, index) => (
-              <AllPatientExaminations />
+              <motion.div variants={item}>
+                <AllPatientExaminations
+                  openExam={openExam}
+                  setOpenExam={setOpenExam}
+                />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* ako ne postoji, prikazujem placeholder */}
-        </div>
+        </motion.div>
       )}
 
-      {!exams && <Placeholders />}
-    </>
+      {!patient && <Placeholders key={'place'} />}
+    </AnimatePresence>
   )
 }
 
 export default PatientExams
 
-const AllPatientExaminations = () => {
+const AllPatientExaminations = ({ openExam, setOpenExam }) => {
   return (
-    <div className='all-patient-exams'>
+    <motion.div
+      className='all-patient-exams'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.3, duration: 0.4 }}
+      exit={{ opacity: 0 }}
+    >
       <div className='info-cont'>
         <span>Conor McGregor</span>
         <Heading2 text={'20.03.2023'} />
         <span>ExaminationID: 4124143</span>
       </div>
-      <Btn cls={'patient-btn'} title={'View Examination'} />
-    </div>
+      <Btn
+        cls={'patient-btn'}
+        title={'View Examination'}
+        onClick={() => setOpenExam(!openExam)}
+      />
+    </motion.div>
   )
 }
 
@@ -49,9 +99,10 @@ const Placeholders = () => {
   return (
     <motion.div
       className='placeholders'
-      initial={{ y: 10, scale: 0.98, opacity: 0 }}
-      animate={{ y: 0, scale: 1, opacity: 1 }}
-      transition={{ delay: 0.2, duration: 1 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.3, duration: 0.4 }}
+      exit={{ opacity: 0 }}
     >
       <img src='./dash-logo.png' alt='Ulnaris' />
       <Heading1 title={'Select Patient'} />

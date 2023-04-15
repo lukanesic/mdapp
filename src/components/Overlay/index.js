@@ -1,11 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const Overlay = ({ open, setOpen }) => {
+const Overlay = ({ onClick }) => {
   return (
     <motion.div
       className='overlay'
-      onClick={() => setOpen(!open)}
+      onClick={onClick}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

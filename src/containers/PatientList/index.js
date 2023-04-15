@@ -70,7 +70,7 @@ const item = {
   },
 }
 
-const PatientList = () => {
+const PatientList = ({ setPatient }) => {
   return (
     <motion.div className='patientlist'>
       <motion.div className='patientlist-top'>
@@ -93,6 +93,7 @@ const PatientList = () => {
               profile={patient.profile}
               index={index}
               btnText={'View patient'}
+              onClick={() => setPatient(true)}
             />
           </motion.div>
         ))}
