@@ -30,7 +30,7 @@ const item = {
 const PatientExams = ({ patient, openExam, setOpenExam }) => {
   return (
     <AnimatePresence mode='wait'>
-      {patient && (
+      {Object.keys(patient).length > 0 && (
         <motion.div
           className='patientexams'
           key={'patient'}
@@ -65,7 +65,7 @@ const PatientExams = ({ patient, openExam, setOpenExam }) => {
         </motion.div>
       )}
 
-      {!patient && <Placeholders key={'place'} />}
+      {Object.keys(patient).length === 0 && <Placeholders key={'place'} />}
     </AnimatePresence>
   )
 }

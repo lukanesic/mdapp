@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import Dashboard from './../containers/Dashboard'
 
@@ -11,16 +11,13 @@ import { AnimatePresence, motion } from 'framer-motion'
 import RMenu from '../menus/RMenu'
 import LMenu from '../menus/LMenu'
 
+import { useDispatch, useSelector } from 'react-redux'
+import { interactLeftMenu, interactRightMenu } from '../redux/slices/menuSlice'
+
 const Home = () => {
-  const [dashboard, setDashboard] = useState('patients')
+  const dispatch = useDispatch()
 
-  // LMenu i sta ga otvara
-  const [openLMenu, setOpenLMenu] = useState(false)
-  const [addForm, setAddForm] = useState('')
-
-  // RMenu i sta ga otvara
-  const [openRMenu, setOpenRMenu] = useState(false)
-  const [overview, setOverview] = useState('')
+  const { dashboard, leftMenu, rightMenu } = useSelector((state) => state.menu)
 
   return (
     <motion.div
@@ -29,64 +26,29 @@ const Home = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5, delay: 1 }}
     >
-      <Dashboard
-        dashboard={dashboard}
-        setDashboard={setDashboard}
-        openLMenu={openLMenu}
-        setOpenLMenu={setOpenLMenu}
-        setAddForm={setAddForm}
-      />
+      <Dashboard />
 
       <AnimatePresence mode='wait'>
         {dashboard === 'patients' && <Patients key={'patients'} />}
 
-        {dashboard === 'appointments' && (
-          <Appointments
-            key={'appointments'}
-            open={openRMenu}
-            setOpen={setOpenRMenu}
-            overview={overview}
-            setOverview={setOverview}
-          />
-        )}
+        {dashboard === 'appointments' && <Appointments key={'appointments'} />}
       </AnimatePresence>
-
-      {/* <AnimatePresence>
-        {dashboard === 'patients' && <Patients key={'patients'} />}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {dashboard === 'appointments' && (
-          <Appointments
-            key={'appointments'}
-            open={openRMenu}
-            setOpen={setOpenRMenu}
-            overview={overview}
-            setOverview={setOverview}
-          />
-        )}
-      </AnimatePresence> */}
 
       {/* ovde otvaram i zatvaram RMenu */}
       <AnimatePresence>
-        {openRMenu && (
+        {rightMenu && (
           <>
-            <Overlay open={openRMenu} setOpen={setOpenRMenu} />
-            <RMenu
-              overview={overview}
-              setOverview={setOverview}
-              open={openRMenu}
-              setOpen={setOpenRMenu}
-            />
+            <Overlay onClick={() => dispatch(interactRightMenu(false))} />
+            <RMenu />
           </>
         )}
       </AnimatePresence>
 
       <AnimatePresence>
-        {openLMenu && (
+        {leftMenu && (
           <>
-            <Overlay open={openLMenu} setOpen={setOpenLMenu} />
-            <LMenu form={addForm} openMenu={openLMenu} setOpen={setOpenLMenu} />
+            <Overlay onClick={() => dispatch(interactLeftMenu(false))} />
+            <LMenu />
           </>
         )}
       </AnimatePresence>

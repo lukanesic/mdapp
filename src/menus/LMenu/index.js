@@ -5,7 +5,13 @@ import CloseIcon from '../../components/CloseIcon'
 import SelectAppointmentType from '../../containers/SelectAppointmentType'
 import NewPatient from './../../containers/NewPatient'
 
-const LMenu = ({ form, openMenu, setOpen }) => {
+import { useDispatch, useSelector } from 'react-redux'
+import { interactLeftMenu } from '../../redux/slices/menuSlice'
+
+const LMenu = () => {
+  const dispatch = useDispatch()
+  const { form } = useSelector((state) => state.menu)
+
   return (
     <motion.div
       className='lmenu'
@@ -21,12 +27,13 @@ const LMenu = ({ form, openMenu, setOpen }) => {
       }}
       transition={{ duration: 0.5, delay: 0.3 }}
     >
-      <CloseIcon onClick={() => setOpen(!openMenu)} color={'#01a1c8'} />
+      <CloseIcon
+        onClick={() => dispatch(interactLeftMenu(false))}
+        color={'#01a1c8'}
+      />
 
-      {form === 'patient' && <NewPatient setOpen={setOpen} open={openMenu} />}
-      {form === 'appointment' && (
-        <SelectAppointmentType setOpen={setOpen} open={openMenu} />
-      )}
+      {form === 'patient' && <NewPatient />}
+      {form === 'appointment' && <SelectAppointmentType />}
     </motion.div>
   )
 }

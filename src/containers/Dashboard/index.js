@@ -8,13 +8,16 @@ import { MdPostAdd } from 'react-icons/md'
 
 import { motion } from 'framer-motion'
 
-const Dashboard = ({
-  dashboard,
-  setDashboard,
-  openLMenu,
-  setOpenLMenu,
-  setAddForm,
-}) => {
+import { useDispatch } from 'react-redux'
+import {
+  interactDashboard,
+  interactLeftMenu,
+  setForm,
+} from '../../redux/slices/menuSlice'
+
+const Dashboard = ({ setAddForm }) => {
+  const dispatch = useDispatch()
+
   return (
     <motion.div
       className='dashboard'
@@ -31,13 +34,13 @@ const Dashboard = ({
         />
 
         <ul>
-          <li onClick={() => setDashboard('patients')}>
+          <li onClick={() => dispatch(interactDashboard('patients'))}>
             <HiUsers />
             <span>Patients</span>
           </li>
           <li>
             <BsCalendarWeek />{' '}
-            <span onClick={() => setDashboard('appointments')}>
+            <span onClick={() => dispatch(interactDashboard('appointments'))}>
               Appointments
             </span>
           </li>
@@ -45,8 +48,8 @@ const Dashboard = ({
             <HiUserAdd />{' '}
             <span
               onClick={() => {
-                setOpenLMenu(!openLMenu)
-                setAddForm('patient')
+                dispatch(interactLeftMenu(true))
+                dispatch(setForm('patient'))
               }}
             >
               Add Patient
@@ -56,8 +59,8 @@ const Dashboard = ({
             <MdPostAdd />{' '}
             <span
               onClick={() => {
-                setOpenLMenu(!openLMenu)
-                setAddForm('appointment')
+                dispatch(interactLeftMenu(true))
+                dispatch(setForm('appointment'))
               }}
             >
               Add Appointment

@@ -2,6 +2,9 @@ import React from 'react'
 import Heading2 from '../../components/Heading2'
 import PatientCard from '../../components/PatientCard'
 
+import { useDispatch } from 'react-redux'
+import { interactRightMenu, setOverview } from '../../redux/slices/menuSlice'
+
 const patients = [
   {
     name: 'Islam Makhachev',
@@ -25,10 +28,12 @@ const patients = [
   },
 ]
 
-const LatestApp = ({ open, setOpen, overview, setOverview }) => {
+const LatestApp = () => {
+  const dispatch = useDispatch()
+
   const handleMenu = () => {
-    setOpen(!open)
-    setOverview('latest')
+    dispatch(interactRightMenu(true))
+    dispatch(setOverview('latest'))
   }
 
   return (

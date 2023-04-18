@@ -4,25 +4,31 @@ import PatientExams from '../../components/PatientExams'
 import PatientInfo from '../../components/PatientInfo'
 
 import Overlay from './../../components/Overlay'
+import { removePatient } from '../../redux/slices/patientsSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
-const Patient = ({ patient, setPatient }) => {
+const Patient = () => {
   const [openExam, setOpenExam] = useState(false)
+  const dispatch = useDispatch()
+
+  const { patient } = useSelector((state) => state.patients)
 
   const handleState = () => {
     setOpenExam(false)
-    setPatient(!patient)
+    dispatch(removePatient())
   }
 
   return (
     <>
       <AnimatePresence>
-        {patient && <Overlay onClick={() => handleState()} />}
+        {Object.keys(patient).length > 0 && (
+          <Overlay onClick={() => handleState()} />
+        )}
       </AnimatePresence>
       <div className='patient'>
-        <PatientInfo patient={patient} setPatient={setPatient} />
+        <PatientInfo patient={patient} onClick={handleState} />
         <PatientExams
           patient={patient}
-          setPatient={setPatient}
           openExam={openExam}
           setOpenExam={setOpenExam}
         />{' '}

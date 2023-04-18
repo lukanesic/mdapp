@@ -22,3 +22,33 @@
     justify-content: space-between;
   }
 }
+
+.patient-list-placeholder {
+  width: 200px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 250px;
+
+  .placeholder-container-img {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin: 1rem auto 0rem;
+    background-color: rgba(217, 231, 237, 0.3);
+    border-radius: 50%;
+  }
+
+  .placeholder-info {
+    text-align: center;
+    background-color: rgba(217, 231, 237, 0.3);
+    height: 10px;
+    width: 100px;
+    border-radius: 20px;
+    margin: 0.5rem 0;
+  }
+}

@@ -6,6 +6,9 @@ import { motion } from 'framer-motion'
 
 import Paragraph from './../../components/Paragraph'
 
+import { useDispatch } from 'react-redux'
+import { interactRightMenu } from '../../redux/slices/menuSlice'
+
 const PatientFromAppointment = () => {
   return (
     <motion.div
@@ -24,9 +27,11 @@ export default PatientFromAppointment
 
 // Componente koje saljem posle u posebne fileove
 const PatientFromAppointmentCard = ({ patient }) => {
+  const dispatch = useDispatch()
+
   return (
     <div className='patient-from-appointment-info'>
-      <CloseIcon onClick={() => console.log('zatvori ovo')} />
+      <CloseIcon onClick={() => dispatch(interactRightMenu(false))} />
       {!patient && <Placeholders />}
       {patient && (
         <div className='patient-from-appointment-box'>

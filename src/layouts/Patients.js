@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Patient from '../containers/Patient'
 import PatientList from '../containers/PatientList'
 
@@ -8,7 +8,6 @@ import { motion } from 'framer-motion'
 // Odavde se vuce info da li je patient selektovan ili nije.
 
 const Patients = () => {
-  const [patient, setPatient] = useState(false)
   return (
     <motion.div
       className='patients'
@@ -17,8 +16,8 @@ const Patients = () => {
       transition={{ duration: 0.7 }}
       exit={{ opacity: 0, transition: { delay: 0.3 } }}
     >
-      <PatientList patient={patient} setPatient={setPatient} />
-      <Patient patient={patient} setPatient={setPatient} />
+      <PatientList />
+      <Patient />
     </motion.div>
   )
 }

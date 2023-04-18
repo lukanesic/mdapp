@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import Form from '../../components/Form'
 import FormLayout from '../../layouts/FormLayout'
 
-const NewPatient = ({ setOpen, open }) => {
+import { useDispatch } from 'react-redux'
+import { interactLeftMenu } from '../../redux/slices/menuSlice'
+
+const NewPatient = () => {
   // stavljam state na veci nivo, zato sto forma ne moze da ima taj state sopstveni
   // jer je reusable
   const [isAdded, setIsAdded] = useState(false)
-
-  const funcForNextStep = () => {
-    setOpen(!open)
-  }
+  const dispatch = useDispatch()
 
   return (
     <FormLayout
@@ -22,7 +22,7 @@ const NewPatient = ({ setOpen, open }) => {
       }
     >
       <Form
-        funcForNextStep={funcForNextStep}
+        funcForNextStep={() => dispatch(interactLeftMenu(false))}
         isAdded={isAdded}
         setIsAdded={setIsAdded}
         btnTitle={'Close'}

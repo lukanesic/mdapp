@@ -5,7 +5,7 @@ import AppointmentForm from '../../components/AppointmentForm'
 import SelectedPatient from '../../components/SelectedPatient'
 import AddNew from '../../components/AddNew'
 
-const SelectAppointmentType = ({ setOpen }) => {
+const SelectAppointmentType = () => {
   const [appType, setAppType] = useState('appointmentform')
 
   return (
@@ -20,9 +20,7 @@ const SelectAppointmentType = ({ setOpen }) => {
       {/* bot */}
       {/* setOpen i openMenu je na success message kada ubace novi appointment */}
       {/* To zatvara ceo LMenu */}
-      {appType === 'patient' && (
-        <SelectedPatient setAppType={setAppType} setOpen={setOpen} />
-      )}
+      {appType === 'patient' && <SelectedPatient setAppType={setAppType} />}
     </AnimatePresence>
   )
 }

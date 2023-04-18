@@ -3,7 +3,10 @@ import ExamsHeader from '../../components/ExamsHeader'
 
 // NAPRAVI POSEBNE FILE-OVE ZA OVE DOLE KOMPONENTE!!!
 
-const AllExams = ({ open, setOpen, overview, setOverview }) => {
+import { useDispatch } from 'react-redux'
+import { interactRightMenu, setOverview } from '../../redux/slices/menuSlice'
+
+const AllExams = () => {
   return (
     <div className='allexams'>
       <ExamsHeader />
@@ -20,34 +23,6 @@ const AllExams = ({ open, setOpen, overview, setOverview }) => {
           email={'oliveira@gmail.com'}
           EID={'2ate313'}
           date={'03.03.2023'}
-          open={open}
-          setOpen={setOpen}
-          overview={overview}
-          setOverview={setOverview}
-        />
-
-        <Exam
-          name={'Charles Oliveira'}
-          img={'https://a.espncdn.com/i/headshots/mma/players/full/2504169.png'}
-          email={'oliveira@gmail.com'}
-          EID={'2ate313'}
-          date={'03.03.2023'}
-          open={open}
-          setOpen={setOpen}
-          overview={overview}
-          setOverview={setOverview}
-        />
-
-        <Exam
-          name={'Charles Oliveira'}
-          img={'https://a.espncdn.com/i/headshots/mma/players/full/2504169.png'}
-          email={'oliveira@gmail.com'}
-          EID={'2ate313'}
-          date={'03.03.2023'}
-          open={open}
-          setOpen={setOpen}
-          overview={overview}
-          setOverview={setOverview}
         />
         {/* <ExamsInfo /> */}
       </div>
@@ -70,20 +45,11 @@ const ExamsInfo = () => {
   )
 }
 
-const Exam = ({
-  EID,
-  img,
-  name,
-  email,
-  date,
-  open,
-  setOpen,
-  overview,
-  setOverview,
-}) => {
+const Exam = ({ EID, img, name, email, date }) => {
+  const dispatch = useDispatch()
   const handleMenu = () => {
-    setOpen(!open)
-    setOverview('exam')
+    dispatch(interactRightMenu(true))
+    dispatch(setOverview('exam'))
   }
 
   return (

@@ -3,9 +3,13 @@ import Btn from '../Btn'
 import FormLayout from '../../layouts/FormLayout'
 
 import { AnimatePresence, motion } from 'framer-motion'
+import { useDispatch } from 'react-redux'
+import { interactLeftMenu } from '../../redux/slices/menuSlice'
 
-const SelectedPatient = ({ setAppType, setOpen, disable }) => {
+const SelectedPatient = ({ setAppType, disable }) => {
   const [success, setSuccess] = useState(false)
+
+  const dispatch = useDispatch()
 
   return (
     <FormLayout
@@ -65,7 +69,11 @@ const SelectedPatient = ({ setAppType, setOpen, disable }) => {
       <Btn
         title={`${!success ? 'Confirm schedule' : 'Close'}`}
         cls={'full'}
-        onClick={!success ? () => setSuccess(true) : () => setOpen(false)}
+        onClick={
+          !success
+            ? () => setSuccess(true)
+            : () => dispatch(interactLeftMenu(false))
+        }
       />
     </FormLayout>
   )
