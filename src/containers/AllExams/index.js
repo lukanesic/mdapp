@@ -1,12 +1,15 @@
 import React from 'react'
 import ExamsHeader from '../../components/ExamsHeader'
 
-// NAPRAVI POSEBNE FILE-OVE ZA OVE DOLE KOMPONENTE!!!
-
 import { useDispatch } from 'react-redux'
 import { interactRightMenu, setOverview } from '../../redux/slices/menuSlice'
 
+import { useSelector } from 'react-redux'
+import { addSelectedExam } from '../../redux/slices/patientsSlice'
+
 const AllExams = () => {
+  const { patients } = useSelector((state) => state.patients)
+
   return (
     <div className='allexams'>
       <ExamsHeader />
@@ -17,22 +20,23 @@ const AllExams = () => {
       </div>
 
       <div className='allexams-container'>
-        <Exam
-          name={'Charles Oliveira'}
-          img={'https://a.espncdn.com/i/headshots/mma/players/full/2504169.png'}
-          email={'oliveira@gmail.com'}
-          EID={'2ate313'}
-          date={'03.03.2023'}
-        />
-        {/* <ExamsInfo /> */}
+        {patients.map((patient) => (
+          <Exam
+            name={patient.name}
+            image={patient.image}
+            email={patient.email}
+            phone={patient.phone}
+            patientID={patient.id}
+            birthDate={patient.birthDate}
+            examinations={patient.examinations}
+          />
+        ))}
       </div>
     </div>
   )
 }
 
 export default AllExams
-
-// Test
 
 const ExamsInfo = () => {
   return (
@@ -45,31 +49,60 @@ const ExamsInfo = () => {
   )
 }
 
-const Exam = ({ EID, img, name, email, date }) => {
+const Exam = ({
+  image,
+  name,
+  email,
+  examinations,
+  phone,
+  patientID,
+  birthDate,
+}) => {
   const dispatch = useDispatch()
-  const handleMenu = () => {
+  const handleMenu = (payload) => {
     dispatch(interactRightMenu(true))
     dispatch(setOverview('exam'))
+    dispatch(addSelectedExam(payload))
   }
 
   return (
-    <div className='exam' onClick={() => handleMenu()}>
-      <div className='examid'>
-        <span>{EID}</span>
-      </div>
-      <div className='exampatient'>
-        <div className='img'>
-          <img src={img} alt={name} className='exam-profile' />
-        </div>
-        <div className='info'>
-          <h5>{name}</h5>
-          <h6>{email}</h6>
-        </div>
-      </div>
+    <>
+      {examinations.map(
+        (exam) =>
+          exam.isReviewed !== false && (
+            <div
+              className='exam'
+              onClick={() =>
+                handleMenu({
+                  exam,
+                  name,
+                  image,
+                  email,
+                  phone,
+                  patientID,
+                  birthDate,
+                })
+              }
+            >
+              <div className='examid'>
+                <span>{exam.examID}</span>
+              </div>
+              <div className='exampatient'>
+                <div className='img'>
+                  <img src={image} alt={name} className='exam-profile' />
+                </div>
+                <div className='info'>
+                  <h5>{name}</h5>
+                  <h6>{email}</h6>
+                </div>
+              </div>
 
-      <div className='date'>
-        <span>{date}</span>
-      </div>
-    </div>
+              <div className='date'>
+                <span>{exam.date}</span>
+              </div>
+            </div>
+          )
+      )}
+    </>
   )
 }

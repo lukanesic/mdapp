@@ -6,6 +6,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Heading2 from '../Heading2'
 import Btn from '../Btn'
 import ExamMenu from '../../menus/ExamMenu'
+import { useDispatch } from 'react-redux'
+import { addSelectedExam } from '../../redux/slices/patientsSlice'
 
 const container = {
   initial: { opacity: 0 },
@@ -51,16 +53,30 @@ const PatientExams = ({ patient, openExam, setOpenExam }) => {
             initial='initial'
             animate='animate'
           >
-            {[0, 1, 2, 3, 4, 5, 6].map((exam, index) => (
-              <motion.div variants={item}>
-                <AllPatientExaminations
-                  openExam={openExam}
-                  setOpenExam={setOpenExam}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
+            {patient &&
+              Object.keys(patient.examinations).length !== 0 &&
+              patient.examinations.map((exam, index) => (
+                <motion.div variants={item} key={index}>
+                  <AllPatientExaminations
+                    openExam={openExam}
+                    setOpenExam={setOpenExam}
+                    exam={exam}
+                    patient={patient.name}
+                  />
+                </motion.div>
+              ))}
 
+            {patient && Object.keys(patient.examinations).length === 0 && (
+              <div>
+                <Heading2 text={'Patient doesnt have examinations!'} />
+                <Paragraph
+                  text={
+                    'Start by adding new examination in the menu on the left.'
+                  }
+                />
+              </div>
+            )}
+          </motion.div>
           {/* ako ne postoji, prikazujem placeholder */}
         </motion.div>
       )}
@@ -72,26 +88,37 @@ const PatientExams = ({ patient, openExam, setOpenExam }) => {
 
 export default PatientExams
 
-const AllPatientExaminations = ({ openExam, setOpenExam }) => {
+const AllPatientExaminations = ({ openExam, setOpenExam, exam, patient }) => {
+  const dispatch = useDispatch()
+
+  const handleOpenExam = () => {
+    setOpenExam(!openExam)
+    dispatch(addSelectedExam(exam))
+  }
+
   return (
-    <motion.div
-      className='all-patient-exams'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.3, duration: 0.4 }}
-      exit={{ opacity: 0 }}
-    >
-      <div className='info-cont'>
-        <span>Conor McGregor</span>
-        <Heading2 text={'20.03.2023'} />
-        <span>ExaminationID: 4124143</span>
-      </div>
-      <Btn
-        cls={'patient-btn'}
-        title={'View Examination'}
-        onClick={() => setOpenExam(!openExam)}
-      />
-    </motion.div>
+    <>
+      {exam.isReviewed !== false && (
+        <motion.div
+          className='all-patient-exams'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.4 }}
+          exit={{ opacity: 0 }}
+        >
+          <div className='info-cont'>
+            <span>{patient}</span>
+            <Heading2 text={exam.date} />
+            <span>ExamID: {exam.examID}</span>
+          </div>
+          <Btn
+            cls={'patient-btn'}
+            title={'View Examination'}
+            onClick={() => handleOpenExam()}
+          />
+        </motion.div>
+      )}
+    </>
   )
 }
 

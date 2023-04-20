@@ -2,36 +2,14 @@ import React from 'react'
 import Heading2 from '../../components/Heading2'
 import PatientCard from '../../components/PatientCard'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { interactRightMenu, setOverview } from '../../redux/slices/menuSlice'
-
-const patients = [
-  {
-    name: 'Islam Makhachev',
-    email: '20.03.2023',
-    profile:
-      'https://a.espncdn.com/combiner/i?img=/i/headshots/mma/players/full/3332412.png&w=350&h=254',
-    id: '1',
-  },
-  {
-    name: 'Djinajlou Ali',
-    email: '21.03.2023',
-    profile:
-      'https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    id: '2',
-  },
-  {
-    name: 'Charles Oliveira',
-    email: '22.03.2023',
-    profile: 'https://a.espncdn.com/i/headshots/mma/players/full/2504169.png',
-    id: '3',
-  },
-]
 
 const LatestApp = () => {
   const dispatch = useDispatch()
+  const { patients } = useSelector((state) => state.patients)
 
-  const handleMenu = () => {
+  const handleStartExamination = (patient) => {
     dispatch(interactRightMenu(true))
     dispatch(setOverview('latest'))
   }
@@ -40,19 +18,24 @@ const LatestApp = () => {
     <div className='latest-app'>
       <Heading2 text={'New Appointments'} />
       <div className='latest'>
-        {patients.map((patient, index) => (
-          <div className='add-margin-on-card'>
-            <PatientCard
-              key={patient.id}
-              name={patient.name}
-              subtitle={patient.email}
-              profile={patient.profile}
-              index={index}
-              btnText={'Start Appointment'}
-              onClick={() => handleMenu()}
-            />
-          </div>
-        ))}
+        {patients.map((patient, index) =>
+          patient.examinations.map(
+            (exam) =>
+              exam.isReviewed === false && (
+                <div className='add-margin-on-card'>
+                  <PatientCard
+                    key={patient.id}
+                    name={exam.date}
+                    subtitle={patient.name}
+                    image={patient.image}
+                    index={index}
+                    btnText={'Start Appointment'}
+                    onClick={() => handleStartExamination()}
+                  />
+                </div>
+              )
+          )
+        )}
       </div>
     </div>
   )

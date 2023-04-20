@@ -9,8 +9,6 @@
   .patientexams-container {
     display: grid;
     grid-template-columns: repeat(3, auto);
-
-    align-items: center;
     height: 100%;
     overflow: scroll;
     z-index: 2000;

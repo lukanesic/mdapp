@@ -9,7 +9,7 @@ const PatientCard = ({
   name,
   subtitle,
   btnText,
-  profile,
+  image,
   index,
   cls,
   onClick,
@@ -17,7 +17,7 @@ const PatientCard = ({
   return (
     <motion.div className={`patientcard ${cls && cls}`}>
       <div className='profile-container'>
-        <img src={profile} alt={name} className='profile' />
+        <img src={image} alt={name} className='profile' />
         <div className='circle' />
       </div>
 

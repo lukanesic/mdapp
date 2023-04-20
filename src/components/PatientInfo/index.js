@@ -49,22 +49,22 @@ const PatientInfoBox = ({ patient }) => {
         exit={{ y: 5, scale: 0.99, opacity: 0 }}
       >
         <div className='left'>
-          <img src={patient.profile} alt='' />
+          <img src={patient.image} alt={patient.name} />
         </div>
         <div className='right'>
           <Heading2 text={patient.name} color={'#fff'} />
           <ul>
             <li>
-              Phone: <span>+5352351433</span>
+              Phone: <span>{patient.phone}</span>
             </li>
             <li>
               Email: <span>{patient.email}</span>
             </li>
             <li>
-              Patient ID: <span>3411351</span>
+              ID: <span>{patient.id}</span>
             </li>
             <li>
-              Birth Date: <span>31.12.1988</span>
+              Birth Date: <span>{patient.birthDate}</span>
             </li>
           </ul>
           <Btn

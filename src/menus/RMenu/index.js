@@ -21,6 +21,8 @@ const RMenu = () => {
       }}
       transition={{ duration: 0.5, delay: 0.3 }}
     >
+      {/* ukolikoo je latest, drugacija komponenta treba da bude. Gde moze da se pise, prepravlja itd. Ovo je bilo samo
+      za test pa zato stoje iste. Promeni to. */}
       <AnimatePresence>
         {overview === 'latest' && (
           <>

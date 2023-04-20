@@ -6,10 +6,12 @@ import { motion } from 'framer-motion'
 
 import Paragraph from './../../components/Paragraph'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { interactRightMenu } from '../../redux/slices/menuSlice'
 
 const PatientFromAppointment = () => {
+  const { selectExam } = useSelector((state) => state.patients)
+
   return (
     <motion.div
       className='patient-from-appointment'
@@ -17,8 +19,8 @@ const PatientFromAppointment = () => {
       animate={{ opacity: 1 }}
       transition={{ delay: 0.6, duration: 0.8 }}
     >
-      <PatientFromAppointmentCard patient />
-      <PatientFromAppointmentExam exam />
+      <PatientFromAppointmentCard patient={selectExam} />
+      <PatientFromAppointmentExam exam={selectExam.exam} />
     </motion.div>
   )
 }
@@ -36,28 +38,22 @@ const PatientFromAppointmentCard = ({ patient }) => {
       {patient && (
         <div className='patient-from-appointment-box'>
           <div className='left'>
-            <img
-              src='https://a.espncdn.com/i/headshots/mma/players/full/3022677.png'
-              alt=''
-            />
+            <img src={patient.image} alt={patient.name} />
           </div>
           <div className='right'>
-            <Heading2
-              text={'Conor McGregor'}
-              color={' rgba(26, 128, 179, 1)'}
-            />
+            <Heading2 text={patient.name} color={' rgba(26, 128, 179, 1)'} />
             <ul>
               <li>
-                Phone: <span>+5352351433</span>
+                Phone: <span>{patient.phone}</span>
               </li>
               <li>
-                Email: <span>conor@gmail.com</span>
+                Email: <span>{patient.email}</span>
               </li>
               <li>
-                Patient ID: <span>3411351</span>
+                ID: <span>{patient.patientID}</span>
               </li>
               <li>
-                Birth Date: <span>31.12.1988</span>
+                Birth Date: <span>{patient.birthDate}</span>
               </li>
             </ul>
           </div>
@@ -73,29 +69,10 @@ const PatientFromAppointmentExam = ({ exam }) => {
       {!exam && <Placeholders />}
       {exam && (
         <>
-          <Heading2 text={'Examination: 20.03.2023'} />
+          <Heading2 text={`Examination: ${exam.date}`} />
           <div className='space-div' />
           <div className='exam-text'>
-            <Paragraph
-              text={
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-              }
-            />
-            <Paragraph
-              text={
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-              }
-            />
-            <Paragraph
-              text={
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-              }
-            />
-            <Paragraph
-              text={
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-              }
-            />
+            <Paragraph text={exam.review} />
           </div>
         </>
       )}

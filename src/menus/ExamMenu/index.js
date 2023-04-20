@@ -4,8 +4,15 @@ import Heading2 from '../../components/Heading2'
 import Paragraph from '../../components/Paragraph'
 import BackIcon from '../../components/BackIcon'
 
-const ExamMenu = ({ openExam, setOpenExam }) => {
-  // ovo sve dolazi iz komponente iznad ili reedux-a ovo je test sve sto se tice podataka
+import { useSelector } from 'react-redux'
+
+const ExamMenu = ({ setOpenExam }) => {
+  const { selectExam } = useSelector((state) => state.patients)
+
+  const handleCloseExam = () => {
+    setOpenExam(false)
+  }
+
   return (
     <motion.div
       className='exam-menu'
@@ -22,33 +29,14 @@ const ExamMenu = ({ openExam, setOpenExam }) => {
       transition={{ duration: 0.5, delay: 0.3 }}
     >
       <div className='exam-h'>
-        <BackIcon onClick={() => setOpenExam(false)} />
+        <BackIcon onClick={() => handleCloseExam()} />
 
-        <Heading2 text={'Examination: 20.03.2023'} />
+        <Heading2 text={`Examination: ${selectExam.date}`} />
       </div>
 
       <div className='space-div' />
       <div className='exam-text'>
-        <Paragraph
-          text={
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-          }
-        />
-        <Paragraph
-          text={
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-          }
-        />
-        <Paragraph
-          text={
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-          }
-        />
-        <Paragraph
-          text={
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-          }
-        />
+        <Paragraph text={selectExam.review} />
       </div>
     </motion.div>
   )

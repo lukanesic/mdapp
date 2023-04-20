@@ -4,7 +4,10 @@ import PatientExams from '../../components/PatientExams'
 import PatientInfo from '../../components/PatientInfo'
 
 import Overlay from './../../components/Overlay'
-import { removePatient } from '../../redux/slices/patientsSlice'
+import {
+  removePatient,
+  removeSelectedExam,
+} from '../../redux/slices/patientsSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Patient = () => {
@@ -16,6 +19,8 @@ const Patient = () => {
   const handleState = () => {
     setOpenExam(false)
     dispatch(removePatient())
+
+    // dispatch(removeSelectedExam())
   }
 
   return (

@@ -21,20 +21,21 @@ const initialState = {
   patient: {},
   loading: false,
   error: false,
+  selectExam: {},
 }
 
 export const patientsSlice = createSlice({
   name: 'patients',
   initialState,
   reducers: {
-    fetchPatients: (state, { payload }) => {
-      state.patients = payload
-    },
     addPatient: (state, { payload }) => {
       state.patient = state.patients.find((selected) => selected.id === payload)
     },
     removePatient: (state) => {
       state.patient = {}
+    },
+    addSelectedExam: (state, { payload }) => {
+      state.selectExam = payload
     },
   },
   extraReducers: {
@@ -53,6 +54,6 @@ export const patientsSlice = createSlice({
   },
 })
 
-export const { fetchPatients, addPatient, removePatient } =
+export const { addPatient, removePatient, addSelectedExam } =
   patientsSlice.actions
 export default patientsSlice.reducer
