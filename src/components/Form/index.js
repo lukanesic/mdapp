@@ -1,6 +1,6 @@
 import React from 'react'
 import Btn from '../Btn'
-import { motion } from 'framer-motion'
+import SuccessMsg from '../SuccessMsg'
 
 const Form = ({ funcForNextStep, isAdded, setIsAdded, btnTitle }) => {
   return (
@@ -24,20 +24,7 @@ const Form = ({ funcForNextStep, isAdded, setIsAdded, btnTitle }) => {
         </>
       )}
 
-      {isAdded && (
-        <div className='fill-form'>
-          <motion.div
-            className='success'
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ delay: 0.2, duration: 0.3 }}
-          >
-            <img src='./success.png' alt='success' width='70px' height='70px' />
-            <span>Patient added!</span>
-          </motion.div>
-        </div>
-      )}
+      {isAdded && <SuccessMsg text={'Patient Added!'} />}
 
       <Btn
         title={`${!isAdded ? 'Add Patient' : btnTitle}`}

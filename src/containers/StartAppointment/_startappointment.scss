@@ -1,0 +1,27 @@
+.start-appointment-form {
+  height: 520px;
+  width: 100%;
+
+  .start-app-text {
+    width: 100%;
+    height: 420px;
+    margin-bottom: 20px;
+
+    textarea {
+      resize: none;
+      border: none;
+      padding: 1rem;
+      outline: none;
+      font-size: 1.1rem;
+      width: 100%;
+      height: 100%;
+      color: $text-blue;
+      border-radius: 5px;
+      line-height: 24px;
+    }
+
+    textarea::placeholder {
+      color: $text-lightblue;
+    }
+  }
+}

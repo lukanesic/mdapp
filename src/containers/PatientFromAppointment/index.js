@@ -1,13 +1,17 @@
 import React from 'react'
-import Btn from '../../components/Btn'
-import CloseIcon from '../../components/CloseIcon'
 import Heading2 from '../../components/Heading2'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
+
+import PatientFromAppointmentInfo from '../../components/PatientFromAppointmentInfo'
 
 import Paragraph from './../../components/Paragraph'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { interactRightMenu } from '../../redux/slices/menuSlice'
+
+import { AiFillDelete } from 'react-icons/ai'
+import { useState } from 'react'
+import SuccessMsg from '../../components/SuccessMsg'
+import { deleteExamination } from '../../redux/slices/patientsSlice'
 
 const PatientFromAppointment = () => {
   const { selectExam } = useSelector((state) => state.patients)
@@ -19,68 +23,54 @@ const PatientFromAppointment = () => {
       animate={{ opacity: 1 }}
       transition={{ delay: 0.6, duration: 0.8 }}
     >
-      <PatientFromAppointmentCard patient={selectExam} />
-      <PatientFromAppointmentExam exam={selectExam.exam} />
+      <PatientFromAppointmentInfo patient={selectExam} />
+      <PatientFromAppointmentExam patient={selectExam} />
     </motion.div>
   )
 }
 
 export default PatientFromAppointment
 
-// Componente koje saljem posle u posebne fileove
-const PatientFromAppointmentCard = ({ patient }) => {
+const PatientFromAppointmentExam = ({ patient }) => {
+  const [deleteExam, setDeleteExam] = useState(false)
   const dispatch = useDispatch()
 
-  return (
-    <div className='patient-from-appointment-info'>
-      <CloseIcon onClick={() => dispatch(interactRightMenu(false))} />
-      {!patient && <Placeholders />}
-      {patient && (
-        <div className='patient-from-appointment-box'>
-          <div className='left'>
-            <img src={patient.image} alt={patient.name} />
-          </div>
-          <div className='right'>
-            <Heading2 text={patient.name} color={' rgba(26, 128, 179, 1)'} />
-            <ul>
-              <li>
-                Phone: <span>{patient.phone}</span>
-              </li>
-              <li>
-                Email: <span>{patient.email}</span>
-              </li>
-              <li>
-                ID: <span>{patient.patientID}</span>
-              </li>
-              <li>
-                Birth Date: <span>{patient.birthDate}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      )}
-    </div>
-  )
-}
+  const handleDeleteExam = (payload) => {
+    setDeleteExam(true)
+    dispatch(deleteExamination(payload))
+  }
 
-const PatientFromAppointmentExam = ({ exam }) => {
   return (
     <div className='patient-from-appointment-exam'>
-      {!exam && <Placeholders />}
-      {exam && (
-        <>
-          <Heading2 text={`Examination: ${exam.date}`} />
-          <div className='space-div' />
-          <div className='exam-text'>
-            <Paragraph text={exam.review} />
-          </div>
-        </>
+      {!patient.exam && <Placeholders />}
+      {patient.exam && (
+        <AnimatePresence>
+          {!deleteExam && (
+            <>
+              <AiFillDelete
+                className='delete'
+                onClick={() =>
+                  handleDeleteExam({
+                    id: patient.patientID,
+                    examID: patient.exam.examID,
+                  })
+                }
+              />
+              <Heading2 text={`Examination: ${patient.exam.date}`} />
+              <div className='space-div' />
+              <div className='exam-text'>
+                <Paragraph text={patient.exam.review} />
+              </div>
+            </>
+          )}
+          {deleteExam && <SuccessMsg text={'Exam Deleted!'} />}
+        </AnimatePresence>
       )}
     </div>
   )
 }
 
-const Placeholders = () => {
+export const Placeholders = () => {
   return (
     <div className='placeholders'>
       <div className='left'>

@@ -2,6 +2,7 @@ import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import PatientFromAppointment from '../../containers/PatientFromAppointment'
 import { useSelector } from 'react-redux'
+import StartAppointment from '../../containers/StartAppointment'
 
 const RMenu = () => {
   const { overview } = useSelector((state) => state.menu)
@@ -26,12 +27,12 @@ const RMenu = () => {
       <AnimatePresence>
         {overview === 'latest' && (
           <>
-            <PatientFromAppointment test={'Latest'} />
+            <StartAppointment />
           </>
         )}
         {overview === 'exam' && (
           <>
-            <PatientFromAppointment test={'Exam'} />
+            <PatientFromAppointment />
           </>
         )}
       </AnimatePresence>

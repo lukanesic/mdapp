@@ -6,58 +6,24 @@
   flex-direction: column;
 }
 
-.patient-from-appointment-info {
-  height: 30%;
-  width: 100%;
-
-  .patient-from-appointment-box {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-
-    .left {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      margin-right: 2rem;
-      background-color: #fff;
-      border: 1px solid $text-blue;
-
-      img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        border-radius: 50%;
-      }
-    }
-
-    .right {
-      color: rgba(26, 128, 179, 1);
-
-      ul {
-        display: grid;
-        grid-template-columns: repeat(2, auto);
-        margin: 1rem 0 0rem;
-
-        li {
-          list-style-type: none;
-          margin: 0.5rem 0;
-          font-weight: 400;
-          letter-spacing: -0.25px;
-          margin-right: 2rem;
-
-          span {
-            font-weight: 200;
-          }
-        }
-      }
-    }
-  }
-}
-
 .patient-from-appointment-exam {
   height: 70%;
   width: 100%;
 
   overflow: scroll;
+  position: relative;
+
+  .delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2rem;
+    color: #1a80b3;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+
+  .delete:hover {
+    color: #06567e;
+  }
 }

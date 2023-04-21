@@ -22,6 +22,9 @@ const initialState = {
   loading: false,
   error: false,
   selectExam: {},
+  // samo testiram nista posebno
+  testing: {},
+  newExam: {},
 }
 
 export const patientsSlice = createSlice({
@@ -36,6 +39,45 @@ export const patientsSlice = createSlice({
     },
     addSelectedExam: (state, { payload }) => {
       state.selectExam = payload
+    },
+    addNewExam: (state, { payload }) => {
+      state.newExam = payload
+      // ta examinacija postoji. Ja ne trebam da pravim novu oid nje. SAmo trebam da je pronadjem kroz id, examID
+      // i da ubacim review i da stavim isReviewed na true
+
+      const newArray = [...state.patients]
+
+      const patientToUpdate = newArray.find(
+        (patient) => patient.id === payload.id
+      )
+
+      const examinationtoupdate = patientToUpdate.examinations.filter(
+        (exam) => exam.examID !== payload.examID
+      )
+
+      patientToUpdate.examinations = [...examinationtoupdate, payload]
+
+      state.patients = newArray
+
+      // sad trebas da nadjes tu examinaciju na bazi i da je izbrises. Pomocu id-a
+    },
+    deleteExamination: (state, { payload }) => {
+      // redux i trenutni pokazatelj state-a
+      const newArray = [...state.patients]
+
+      const patientToUpdate = newArray.find(
+        (patient) => patient.id === payload.id
+      )
+
+      const updateExaminations = patientToUpdate.examinations.filter(
+        (exam) => exam.examID !== payload.examID
+      )
+
+      patientToUpdate.examinations = updateExaminations
+
+      state.patients = newArray
+
+      // sad trebas da nadjes tu examinaciju na bazi i da je izbrises. Pomocu id-a
     },
   },
   extraReducers: {
@@ -54,6 +96,11 @@ export const patientsSlice = createSlice({
   },
 })
 
-export const { addPatient, removePatient, addSelectedExam } =
-  patientsSlice.actions
+export const {
+  addPatient,
+  removePatient,
+  addSelectedExam,
+  addNewExam,
+  deleteExamination,
+} = patientsSlice.actions
 export default patientsSlice.reducer

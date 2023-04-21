@@ -110,6 +110,7 @@ p {
 @import './../components/AddExisting/addexsiting';
 @import './../components/SelectedPatient/selectedPatient';
 @import './../components/Form/form';
+@import './../components/PatientFromAppointmentInfo/patientfromappointmentinfo';
 
 @import './../containers/Dashboard/dashboard';
 @import './../containers/PatientList/patientlist';
@@ -117,6 +118,7 @@ p {
 @import './../containers/LatestApp/latestapp';
 @import './../containers/AllExams/allexams';
 @import './../containers/PatientFromAppointment/patientfromappointment';
+@import './../containers/StartAppointment/startappointment';
 
 @import './../menus/LMenu/lmenu';
 @import './../menus/RMenu/rmenu';

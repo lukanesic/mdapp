@@ -638,6 +638,49 @@ p {
   letter-spacing: -0.2px;
 }
 
+.patient-from-appointment-info {
+  height: 30%;
+  width: 100%;
+}
+.patient-from-appointment-info .patient-from-appointment-box {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+}
+.patient-from-appointment-info .patient-from-appointment-box .left {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  margin-right: 2rem;
+  background-color: #fff;
+  border: 1px solid #01a1c8;
+}
+.patient-from-appointment-info .patient-from-appointment-box .left img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+.patient-from-appointment-info .patient-from-appointment-box .right {
+  color: rgb(26, 128, 179);
+}
+.patient-from-appointment-info .patient-from-appointment-box .right ul {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  margin: 1rem 0 0rem;
+}
+.patient-from-appointment-info .patient-from-appointment-box .right ul li {
+  list-style-type: none;
+  margin: 0.5rem 0;
+  font-weight: 400;
+  letter-spacing: -0.25px;
+  margin-right: 2rem;
+}
+.patient-from-appointment-info .patient-from-appointment-box .right ul li span {
+  font-weight: 200;
+}
+
 .dashboard {
   width: 25%;
   height: 100%;
@@ -733,6 +776,7 @@ p {
   padding: 2rem 0 0.5rem;
   display: flex;
   overflow-y: scroll;
+  height: 270px;
 }
 .latest-app .latest .add-margin-on-card {
   margin-right: 2rem;
@@ -850,53 +894,51 @@ p {
   flex-direction: column;
 }
 
-.patient-from-appointment-info {
-  height: 30%;
-  width: 100%;
-}
-.patient-from-appointment-info .patient-from-appointment-box {
-  display: flex;
-  align-items: center;
-  background-color: transparent;
-}
-.patient-from-appointment-info .patient-from-appointment-box .left {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  margin-right: 2rem;
-  background-color: #fff;
-  border: 1px solid #01a1c8;
-}
-.patient-from-appointment-info .patient-from-appointment-box .left img {
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 50%;
-}
-.patient-from-appointment-info .patient-from-appointment-box .right {
-  color: rgb(26, 128, 179);
-}
-.patient-from-appointment-info .patient-from-appointment-box .right ul {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  margin: 1rem 0 0rem;
-}
-.patient-from-appointment-info .patient-from-appointment-box .right ul li {
-  list-style-type: none;
-  margin: 0.5rem 0;
-  font-weight: 400;
-  letter-spacing: -0.25px;
-  margin-right: 2rem;
-}
-.patient-from-appointment-info .patient-from-appointment-box .right ul li span {
-  font-weight: 200;
-}
-
 .patient-from-appointment-exam {
   height: 70%;
   width: 100%;
   overflow: scroll;
+  position: relative;
+}
+.patient-from-appointment-exam .delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 2rem;
+  color: #1a80b3;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.patient-from-appointment-exam .delete:hover {
+  color: #06567e;
+}
+
+.start-appointment-form {
+  height: 520px;
+  width: 100%;
+}
+.start-appointment-form .start-app-text {
+  width: 100%;
+  height: 420px;
+  margin-bottom: 20px;
+}
+.start-appointment-form .start-app-text textarea {
+  resize: none;
+  border: none;
+  padding: 1rem;
+  outline: none;
+  font-size: 1.1rem;
+  width: 100%;
+  height: 100%;
+  color: #01a1c8;
+  border-radius: 5px;
+  line-height: 24px;
+}
+.start-appointment-form .start-app-text textarea::-moz-placeholder {
+  color: rgba(1, 160, 200, 0.5411764706);
+}
+.start-appointment-form .start-app-text textarea::placeholder {
+  color: rgba(1, 160, 200, 0.5411764706);
 }
 
 .lmenu {
