@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Heading2 from './../Heading2'
 import Btn from './../Btn'
 
+import { deleteDoc, doc } from '@firebase/firestore'
+import { db } from '../../firebase'
+
 import { AnimatePresence, motion } from 'framer-motion'
 import CloseIcon from '../CloseIcon'
+import { deletePatient } from '../../redux/slices/patientsSlice'
+import { useDispatch } from 'react-redux'
 
 const PatientInfo = ({ patient, onClick }) => {
   return (
@@ -38,6 +43,16 @@ const PatientInfo = ({ patient, onClick }) => {
 export default PatientInfo
 
 const PatientInfoBox = ({ patient }) => {
+  const [deleteQ, setDeleteQ] = useState(false)
+  const dispatch = useDispatch()
+
+  const handleDeletePatient = async (id) => {
+    dispatch(deletePatient(id))
+    // nece preko redux-a
+    // dispatch(deletePatientFromDB(id))
+    await deleteDoc(doc(db, 'patients', id))
+  }
+
   return (
     <AnimatePresence mode='wait'>
       <motion.div
@@ -67,11 +82,24 @@ const PatientInfoBox = ({ patient }) => {
               Birth Date: <span>{patient.birthDate}</span>
             </li>
           </ul>
-          <Btn
-            title={'Delete Patient'}
-            onClick={() => console.log('funkcija za brisanja pacijenta')}
-            cls={'delete-btn'}
-          />
+
+          <AnimatePresence>
+            {!deleteQ && (
+              <Btn
+                title={'Delete Patient'}
+                onClick={() => setDeleteQ(true)}
+                cls={'delete-btn'}
+              />
+            )}
+
+            {deleteQ && (
+              <Btn
+                title={'Confirm deletion'}
+                onClick={() => handleDeletePatient(patient.id)}
+                cls={'delete-red-btn'}
+              />
+            )}
+          </AnimatePresence>
         </div>
       </motion.div>
     </AnimatePresence>

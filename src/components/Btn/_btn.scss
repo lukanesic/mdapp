@@ -35,6 +35,18 @@
   background-color: #074c6f;
 }
 
+.delete-red-btn {
+  font-size: 0.85rem;
+  color: #fff;
+  background-color: #d11a2a;
+  border: none;
+  border-radius: 5px;
+}
+
+.delete-red-btn:hover {
+  background-color: #ae0f1c;
+}
+
 .patient-btn {
   width: inherit;
   background-color: #99d9e9;

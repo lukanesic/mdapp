@@ -161,6 +161,18 @@ p {
   background-color: #074c6f;
 }
 
+.delete-red-btn {
+  font-size: 0.85rem;
+  color: #fff;
+  background-color: #d11a2a;
+  border: none;
+  border-radius: 5px;
+}
+
+.delete-red-btn:hover {
+  background-color: #ae0f1c;
+}
+
 .patient-btn {
   width: inherit;
   background-color: #99d9e9;
@@ -556,8 +568,17 @@ p {
 }
 
 .selected-info {
-  margin-top: 3rem;
   color: rgb(26, 128, 179);
+}
+.selected-info img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-color: #d9e7ed;
+  display: inline-block;
+  margin: 2rem 0;
 }
 .selected-info h2 {
   font-size: 2.2rem;
@@ -589,18 +610,22 @@ p {
 .fill-form .inputs input {
   border: none;
   background-color: transparent;
-  width: 100px;
+  width: 90px;
   outline: none;
-  font-size: 2.5rem;
-  border-bottom: 1px solid #01a1c8;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #01a1c8;
   text-align: center;
   color: rgb(26, 128, 179);
+  transition: all 0.4s ease;
+}
+.fill-form .inputs .input-wrong {
+  border-bottom: 2px solid rgb(255, 87, 87);
 }
 .fill-form .inputs input::-moz-placeholder {
-  color: rgba(26, 128, 179, 0.6);
+  color: rgba(26, 128, 179, 0.3);
 }
 .fill-form .inputs input::placeholder {
-  color: rgba(26, 128, 179, 0.6);
+  color: rgba(26, 128, 179, 0.3);
 }
 .fill-form .success {
   display: flex;
@@ -625,6 +650,9 @@ p {
   color: rgb(26, 128, 179);
   font-weight: 200;
 }
+.form .label-wrong {
+  color: rgb(255, 87, 87);
+}
 .form input {
   width: 100%;
   margin-bottom: 1rem;
@@ -636,6 +664,9 @@ p {
   font-size: 1rem;
   color: rgb(26, 128, 179);
   letter-spacing: -0.2px;
+}
+.form .input-wrong {
+  border-bottom: 1px solid rgb(255, 87, 87);
 }
 
 .patient-from-appointment-info {
@@ -679,6 +710,64 @@ p {
 }
 .patient-from-appointment-info .patient-from-appointment-box .right ul li span {
   font-weight: 200;
+}
+
+.exam {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  border-radius: 10px;
+  padding: 1rem 1rem;
+  margin: 0 2rem;
+  border-bottom: 1px solid rgba(1, 160, 200, 0.5411764706);
+  background-color: transparent;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  justify-content: space-between;
+  align-items: center;
+  color: #01a1c8;
+}
+.exam span,
+.exam h5,
+.exam h6 {
+  letter-spacing: -0.2px;
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+.exam h6 {
+  font-size: 0.7rem !important;
+}
+.exam .examid {
+  font-size: 0.8rem;
+  letter-spacing: -0.5px;
+}
+.exam .exampatient {
+  display: flex;
+  align-items: center;
+  margin-left: 4rem;
+  width: 230px;
+}
+.exam .exampatient .img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #d9e7ed;
+  margin-right: 1rem;
+  position: relative;
+}
+.exam .exampatient .img .exam-profile {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+
+.exam:hover {
+  background-color: rgba(217, 231, 237, 0.5);
+}
+
+.exam:nth-last-child(-n+2) {
+  border-bottom: none;
 }
 
 .dashboard {
@@ -827,64 +916,6 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.exam {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  border-radius: 10px;
-  padding: 1rem 1rem;
-  margin: 0 2rem;
-  border-bottom: 1px solid rgba(1, 160, 200, 0.5411764706);
-  background-color: transparent;
-  transition: all 0.4s ease;
-  cursor: pointer;
-  justify-content: space-between;
-  align-items: center;
-  color: #01a1c8;
-}
-.exam span,
-.exam h5,
-.exam h6 {
-  letter-spacing: -0.2px;
-  font-weight: 300;
-  font-size: 0.9rem;
-}
-.exam h6 {
-  font-size: 0.7rem !important;
-}
-.exam .examid {
-  font-size: 0.8rem;
-  letter-spacing: -0.5px;
-}
-.exam .exampatient {
-  display: flex;
-  align-items: center;
-  margin-left: 4rem;
-  width: 230px;
-}
-.exam .exampatient .img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #d9e7ed;
-  margin-right: 1rem;
-  position: relative;
-}
-.exam .exampatient .img .exam-profile {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 50%;
-}
-
-.exam:hover {
-  background-color: rgba(217, 231, 237, 0.5);
-}
-
-.exam:nth-last-child(-n+2) {
-  border-bottom: none;
 }
 
 .patient-from-appointment {

@@ -8,9 +8,12 @@
     font-weight: 200;
   }
 
+  .label-wrong {
+    color: rgb(255, 87, 87);
+  }
+
   input {
     width: 100%;
-
     margin-bottom: 1rem;
     outline: none;
     padding: 0.5rem;
@@ -20,5 +23,9 @@
     font-size: 1rem;
     color: rgba(26, 128, 179, 1);
     letter-spacing: -0.2px;
+  }
+
+  .input-wrong {
+    border-bottom: 1px solid rgb(255, 87, 87);
   }
 }

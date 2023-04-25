@@ -1,7 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import { db } from '../../firebase'
-import { collection, getDocs } from '@firebase/firestore'
+import {
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+  doc,
+} from '@firebase/firestore'
 
 export const fetchPatientsFromDB = createAsyncThunk(
   'patientsSlice/fetchPatientsFromDB',
@@ -10,8 +16,62 @@ export const fetchPatientsFromDB = createAsyncThunk(
       const patientsRef = collection(db, 'patients')
       const data = await getDocs(patientsRef)
       return data.docs.map((patient) => ({ ...patient.data(), id: patient.id }))
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+      return error
+    }
+  }
+)
+
+export const addNewPatientToDB = createAsyncThunk(
+  'patientsSlice/addNewPatientToDB',
+  async (patient) => {
+    try {
+      const patientRef = collection(db, 'patients')
+      await addDoc(patientRef, patient)
+    } catch (error) {
+      return error
+    }
+  }
+)
+
+// Ovo imam samo sve sto vec radim u app, da prebacim na bazu.
+export const addNewAppointmentToDB = createAsyncThunk(
+  'patientsSlice/addNewAppointmentToDB',
+  async () => {
+    try {
+    } catch (error) {
+      return error
+    }
+  }
+)
+
+export const addNewExamToDB = createAsyncThunk(
+  'patientsSlice/addNewExamToDb',
+  async () => {
+    try {
+    } catch (error) {
+      console.log(error)
+    }
+  }
+)
+
+export const deleteExamFromDB = createAsyncThunk(
+  'patients/deleteExamFromDB',
+  async () => {
+    try {
+    } catch (error) {
+      console.log(error)
+    }
+  }
+)
+
+export const deletePatientFromDB = createAsyncThunk(
+  'patientsSlice/deletePatientFromDB',
+  async (id) => {
+    try {
+      await deleteDoc(doc, (db, 'patients', id))
+    } catch (error) {
+      return error
     }
   }
 )
@@ -19,6 +79,7 @@ export const fetchPatientsFromDB = createAsyncThunk(
 const initialState = {
   patients: [],
   patient: {},
+  patientForAppointment: {},
   loading: false,
   error: false,
   selectExam: {},
@@ -33,6 +94,18 @@ export const patientsSlice = createSlice({
   reducers: {
     addPatient: (state, { payload }) => {
       state.patient = state.patients.find((selected) => selected.id === payload)
+    },
+    addPatientForAppointment: (state, { payload }) => {
+      state.patientForAppointment = state.patients.find(
+        (selected) => selected.id === payload
+      )
+    },
+    deletePatient: (state, { payload }) => {
+      state.patients = state.patients.filter(
+        (patient) => patient.id !== payload
+      )
+
+      state.patient = {}
     },
     removePatient: (state) => {
       state.patient = {}
@@ -79,6 +152,24 @@ export const patientsSlice = createSlice({
 
       // sad trebas da nadjes tu examinaciju na bazi i da je izbrises. Pomocu id-a
     },
+    addNewPatient: (state, { payload }) => {
+      state.patients = state.patients.concat(payload)
+    },
+    addNewAppointment: (state, { payload }) => {
+      const newArray = [...state.patients]
+
+      const patientToUpdate = newArray.find(
+        (patient) => patient.id === payload.patientID
+      )
+
+      const addAppointment = patientToUpdate.examinations.concat(
+        payload.appointment
+      )
+
+      patientToUpdate.examinations = [...addAppointment]
+
+      state.patients = newArray
+    },
   },
   extraReducers: {
     [fetchPatientsFromDB.pending]: (state, { payload }) => {
@@ -93,6 +184,42 @@ export const patientsSlice = createSlice({
       state.error = payload
       state.loading = false
     },
+    [addNewPatientToDB.pending]: (state, { payload }) => {
+      console.log(payload)
+      state.loading = true
+    },
+    [addNewPatientToDB.fulfilled]: (state, { payload }) => {
+      console.log(payload)
+      state.loading = false
+    },
+    [addNewPatientToDB.rejected]: (state, { payload }) => {
+      state.error = payload
+      state.loading = false
+    },
+    [addNewAppointmentToDB.pending]: (state, { payload }) => {
+      console.log(payload)
+      state.loading = true
+    },
+    [addNewAppointmentToDB.fulfilled]: (state, { payload }) => {
+      console.log(payload)
+      state.loading = false
+    },
+    [addNewAppointmentToDB.rejected]: (state, { payload }) => {
+      state.error = payload
+      state.loading = false
+    },
+    [deletePatientFromDB.pending]: (state, { payload }) => {
+      console.log(payload)
+      state.loading = true
+    },
+    [deletePatientFromDB.fulfilled]: (state, { payload }) => {
+      console.log(payload)
+      state.loading = false
+    },
+    [deletePatientFromDB.rejected]: (state, { payload }) => {
+      state.error = payload
+      state.loading = false
+    },
   },
 })
 
@@ -102,5 +229,10 @@ export const {
   addSelectedExam,
   addNewExam,
   deleteExamination,
+  addNewPatient,
+  addPatientForAppointment,
+  addNewAppointment,
+  deletePatient,
 } = patientsSlice.actions
+
 export default patientsSlice.reducer

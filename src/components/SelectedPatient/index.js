@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useId } from 'react'
 import Btn from '../Btn'
 import FormLayout from '../../layouts/FormLayout'
 
@@ -6,10 +6,75 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useDispatch } from 'react-redux'
 import { interactLeftMenu } from '../../redux/slices/menuSlice'
 
+import { useSelector } from 'react-redux'
+import { addNewAppointment } from '../../redux/slices/patientsSlice'
+
 const SelectedPatient = ({ setAppType, disable }) => {
   const [success, setSuccess] = useState(false)
 
+  const uniqueID = useId()
+
+  const [newAppointment, setNewAppointment] = useState({
+    day: { value: '', isValid: true },
+    month: { value: '', isValid: true },
+    year: { value: '', isValid: true },
+    hour: { value: '', isValid: true },
+  })
+
   const dispatch = useDispatch()
+
+  const { patientForAppointment } = useSelector((state) => state.patients)
+
+  const handleAddNewAppointment = async () => {
+    const dayIsValid = newAppointment.day.value.trim().length > 0
+    const monthIsValid = newAppointment.month.value.trim().length > 0
+    const yearIsValid = newAppointment.year.value.trim().length > 0
+    const hourIsValid = newAppointment.hour.value.trim().length > 0
+
+    if (!dayIsValid || !monthIsValid || !yearIsValid || !hourIsValid) {
+      setNewAppointment((current) => {
+        return {
+          day: { value: current.day.value, isValid: dayIsValid },
+          month: { value: current.month.value, isValid: monthIsValid },
+          year: {
+            value: current.year.value,
+            isValid: yearIsValid,
+          },
+
+          hour: { value: current.hour.value, isValid: hourIsValid },
+        }
+      })
+      return
+    }
+
+    const newAppointmentObj = {
+      date: `${newAppointment.day.value}.${newAppointment.month.value}.${newAppointment.year.value}`,
+      time: newAppointment.hour.value,
+      isReviewed: false,
+      review: '',
+      examID: uniqueID,
+    }
+
+    // addNewAppoitntment
+    dispatch(
+      addNewAppointment({
+        patientID: patientForAppointment.id,
+        appointment: newAppointmentObj,
+      })
+    )
+    setSuccess(true)
+  }
+
+  const inputHandler = (identifier, value) => {
+    const val = value.target.value
+
+    setNewAppointment((current) => {
+      return {
+        ...current,
+        [identifier]: { value: val, isValid: true },
+      }
+    })
+  }
 
   return (
     <FormLayout
@@ -21,15 +86,18 @@ const SelectedPatient = ({ setAppType, disable }) => {
         'Fill the form with the information to create new appointment.'
       }
     >
-      <div className='space-div' />
+      {/* <div className='space-div' /> */}
 
       {/* Ovi podaci dolaze iz redux-a, sad su static */}
       <div className='selected-info'>
-        {' '}
-        <h2>Islam Makhachev</h2>
-        <p>islam@gmail.com</p>
+        <img
+          src={patientForAppointment.image}
+          alt={patientForAppointment.name}
+        />{' '}
+        <h2>{patientForAppointment.name}</h2>
+        <p>{patientForAppointment.email}</p>
         <h4>
-          PatientID: <span>0134014153</span>
+          PatientID: <span>{patientForAppointment.id}</span>
         </h4>
       </div>
 
@@ -38,9 +106,34 @@ const SelectedPatient = ({ setAppType, disable }) => {
           <div className='fill-form'>
             {/* <Heading2 text={'Date:'} /> */}
             <div className='inputs'>
-              <input type='text' placeholder='DD' maxlength='2' />
-              <input type='text' placeholder='MM' maxlength='2' />
-              <input type='text' placeholder='YY' maxlength='4' />
+              <input
+                type='text'
+                placeholder='12:00 (Hr)'
+                maxlength='5'
+                onChange={inputHandler.bind(this, 'hour')}
+                className={`${!newAppointment.hour.isValid && 'input-wrong'}`}
+              />
+              <input
+                type='text'
+                placeholder='02 (DD)'
+                maxlength='2'
+                onChange={inputHandler.bind(this, 'day')}
+                className={`${!newAppointment.day.isValid && 'input-wrong'}`}
+              />
+              <input
+                type='text'
+                placeholder='05 (MM)'
+                maxlength='2'
+                onChange={inputHandler.bind(this, 'month')}
+                className={`${!newAppointment.month.isValid && 'input-wrong'}`}
+              />
+              <input
+                type='text'
+                placeholder='2023 (YY)'
+                maxlength='4'
+                onChange={inputHandler.bind(this, 'year')}
+                className={`${!newAppointment.year.isValid && 'input-wrong'}`}
+              />
             </div>
           </div>
         )}
@@ -71,7 +164,7 @@ const SelectedPatient = ({ setAppType, disable }) => {
         cls={'full'}
         onClick={
           !success
-            ? () => setSuccess(true)
+            ? () => handleAddNewAppointment()
             : () => dispatch(interactLeftMenu(false))
         }
       />

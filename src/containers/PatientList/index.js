@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PatientCard from '../../components/PatientCard'
 
 import Heading2 from './../../components/Heading2'
@@ -14,6 +14,10 @@ const container = {
     opacity: 1,
     transition: { delayChildren: 0.1, staggerChildren: 0.1 },
   },
+  exit: {
+    opacity: 0,
+    transition: { delayChildren: 0.1, staggerChildren: 0.1 },
+  },
 }
 
 const item = {
@@ -26,10 +30,12 @@ const item = {
       duration: 1,
     },
   },
+  exit: { scale: 0.98, y: 10, opacity: 0, transition: { duration: 1 } },
 }
 
 const PatientList = () => {
   const { patients } = useSelector((state) => state.patients)
+  const [patName, setPatName] = useState('')
 
   // test
   const dispatch = useDispatch()
@@ -38,11 +44,13 @@ const PatientList = () => {
     <motion.div className='patientlist'>
       <motion.div className='patientlist-top'>
         <Heading2 text={'Patients'} />
-        <Search
-          cls={'light'}
-          placeholder={'Search by name'}
-          onChange={() => console.log('search func')}
-        />
+        {Object.keys(patients).length !== 0 && (
+          <Search
+            cls={'light'}
+            placeholder={'Search by name'}
+            onChange={(e) => setPatName(e.target.value)}
+          />
+        )}
       </motion.div>
 
       <motion.div
@@ -51,31 +59,38 @@ const PatientList = () => {
         initial='initial'
         animate='animate'
       >
-        {Object.keys(patients).length === 0 ? (
-          <>
-            {[0, 1, 2, 3, 4].map((item, index) => (
-              <PatientListPlaceholder />
-            ))}
-            {/* <h1>Nema pacijenata</h1> */}
-          </>
-        ) : (
-          <>
-            {patients.map((patient, index) => (
-              <motion.div variants={item}>
-                <PatientCard
-                  key={patient.id}
-                  name={patient.name}
-                  subtitle={patient.email}
-                  image={patient.image}
-                  index={index}
-                  btnText={'View patient'}
-                  onClick={() => dispatch(addPatient(patient.id))}
-                />
-              </motion.div>
-            ))}
-            {/* <h1>Ima</h1> */}
-          </>
-        )}
+        <>
+          {Object.keys(patients).length === 0 ? (
+            <>
+              {[0, 1, 2, 3, 4].map((item, index) => (
+                <PatientListPlaceholder key={'place'} />
+              ))}
+              {/* <h1>Nema pacijenata</h1> */}
+            </>
+          ) : (
+            <>
+              {Object.keys(patients).length !== 0 &&
+                patients
+                  .filter((patient) => {
+                    if (patName === '') return patient
+                    else if (patient.name.includes(patName)) return patient
+                  })
+                  .map((patient, index) => (
+                    <motion.div variants={item} key={'patients'}>
+                      <PatientCard
+                        key={patient.id}
+                        name={patient.name}
+                        subtitle={patient.email}
+                        image={patient.image}
+                        index={index}
+                        btnText={'View patient'}
+                        onClick={() => dispatch(addPatient(patient.id))}
+                      />
+                    </motion.div>
+                  ))}
+            </>
+          )}
+        </>
       </motion.div>
     </motion.div>
   )
