@@ -7,7 +7,10 @@ import { useDispatch } from 'react-redux'
 import { interactLeftMenu } from '../../redux/slices/menuSlice'
 
 import { useSelector } from 'react-redux'
-import { addNewAppointment } from '../../redux/slices/patientsSlice'
+import {
+  addNewAppointment,
+  addNewAppointmentToDB,
+} from '../../redux/slices/patientsSlice'
 
 const SelectedPatient = ({ setAppType, disable }) => {
   const [success, setSuccess] = useState(false)
@@ -55,7 +58,10 @@ const SelectedPatient = ({ setAppType, disable }) => {
       examID: uniqueID,
     }
 
-    // addNewAppoitntment
+    dispatch(
+      addNewAppointmentToDB({ newAppointmentObj, id: patientForAppointment.id })
+    )
+
     dispatch(
       addNewAppointment({
         patientID: patientForAppointment.id,

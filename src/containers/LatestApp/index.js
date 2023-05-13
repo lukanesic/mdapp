@@ -4,17 +4,31 @@ import PatientCard from '../../components/PatientCard'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { interactRightMenu, setOverview } from '../../redux/slices/menuSlice'
-import { addSelectedExam } from '../../redux/slices/patientsSlice'
-import Paragraph from './../../components/Paragraph'
+import {
+  addAppointmentToDelete,
+  addSelectedExam,
+} from '../../redux/slices/patientsSlice'
 
 const LatestApp = () => {
   const dispatch = useDispatch()
   const { patients } = useSelector((state) => state.patients)
 
   const handleStartExamination = (payload) => {
+    console.log(payload)
     dispatch(interactRightMenu(true))
     dispatch(setOverview('latest'))
     dispatch(addSelectedExam(payload))
+
+    dispatch(
+      addAppointmentToDelete({
+        examID: payload.examID,
+        date: payload.date,
+        review: '',
+        isReviewed: false,
+        patientID: payload.patientID,
+        time: payload.time,
+      })
+    )
   }
 
   return (
@@ -44,6 +58,9 @@ const LatestApp = () => {
                           birthDate: patient.birthDate,
                           date: exam.date,
                           examID: exam.examID,
+                          review: exam.review,
+                          isReviewed: exam.isReviewed,
+                          time: exam.time,
                         })
                       }
                     />

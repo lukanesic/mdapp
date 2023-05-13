@@ -3,11 +3,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import PatientFromAppointmentInfo from '../../components/PatientFromAppointmentInfo'
 import Heading2 from '../../components/Heading2'
 import Btn from './../../components/Btn'
-import { addNewExam } from '../../redux/slices/patientsSlice'
+import {
+  addNewAppointmentToDB,
+  addNewExam,
+  updateAppointmentToExamDB,
+} from '../../redux/slices/patientsSlice'
 import { interactRightMenu } from '../../redux/slices/menuSlice'
 
 import { AnimatePresence, motion } from 'framer-motion'
 import SuccessMsg from '../../components/SuccessMsg'
+import { db } from '../../firebase'
+
+import { doc, updateDoc, arrayRemove } from '@firebase/firestore'
 
 const StartAppointment = () => {
   const { selectExam } = useSelector((state) => state.patients)
@@ -27,10 +34,41 @@ const StartAppointmentForm = ({ exam }) => {
 
   const dispatch = useDispatch()
 
-  const handleSaveExam = (payload) => {
+  const { appointmentToDelete } = useSelector((state) => state.patients)
+
+  const handleSaveExam = async (payload) => {
+    const newAppointmentObj = {
+      review: payload.review,
+      examID: payload.examID,
+      isReviewed: payload.isReviewed,
+      date: payload.date,
+      time: payload.time,
+    }
+
+    const oldAppointmentObj = {
+      review: appointmentToDelete.review,
+      examID: appointmentToDelete.examID,
+      isReviewed: appointmentToDelete.isReviewed,
+      date: appointmentToDelete.date,
+      time: appointmentToDelete.time,
+    }
+
+    console.log(oldAppointmentObj)
+
     if (newExam !== '') {
       dispatch(addNewExam(payload))
-      setSuccess(true)
+      // dispatch(updateAppointmentToExamDB({ oldAppointmentOb, id: payload.id }))
+      try {
+        const patientRef = doc(db, 'patients', payload.id)
+
+        await updateDoc(patientRef, {
+          examinations: arrayRemove(oldAppointmentObj),
+        })
+        dispatch(addNewAppointmentToDB({ newAppointmentObj, id: payload.id }))
+        setSuccess(true)
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 
@@ -68,6 +106,7 @@ const StartAppointmentForm = ({ exam }) => {
                   id: exam.patientID,
                   isReviewed: true,
                   date: exam.date,
+                  time: exam.time,
                 })
         }
         title={success ? 'Close' : 'Save'}

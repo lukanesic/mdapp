@@ -25,6 +25,7 @@ const Exam = ({
         (exam) =>
           exam.isReviewed !== false && (
             <div
+              key={exam.id}
               className='exam'
               onClick={() =>
                 handleMenu({

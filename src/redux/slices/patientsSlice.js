@@ -7,6 +7,9 @@ import {
   addDoc,
   deleteDoc,
   doc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
 } from '@firebase/firestore'
 
 export const fetchPatientsFromDB = createAsyncThunk(
@@ -27,7 +30,8 @@ export const addNewPatientToDB = createAsyncThunk(
   async (patient) => {
     try {
       const patientRef = collection(db, 'patients')
-      await addDoc(patientRef, patient)
+      const response = await addDoc(patientRef, patient)
+      return response.id
     } catch (error) {
       return error
     }
@@ -37,18 +41,28 @@ export const addNewPatientToDB = createAsyncThunk(
 // Ovo imam samo sve sto vec radim u app, da prebacim na bazu.
 export const addNewAppointmentToDB = createAsyncThunk(
   'patientsSlice/addNewAppointmentToDB',
-  async () => {
+  async (patient) => {
     try {
+      const patientRef = doc(db, 'patients', patient.id)
+      await updateDoc(patientRef, {
+        examinations: arrayUnion(patient.newAppointmentObj),
+      })
     } catch (error) {
       return error
     }
   }
 )
 
-export const addNewExamToDB = createAsyncThunk(
-  'patientsSlice/addNewExamToDb',
-  async () => {
+export const updateAppointmentToExamDB = createAsyncThunk(
+  'patientsSlice/updateAppointmentToExamDB',
+  async (patient) => {
+    console.log(patient)
     try {
+      const patientRef = doc(db, 'patients', patient.id)
+
+      await updateDoc(patientRef, {
+        examinations: arrayRemove(patient.oldAppointment),
+      })
     } catch (error) {
       console.log(error)
     }
@@ -57,8 +71,20 @@ export const addNewExamToDB = createAsyncThunk(
 
 export const deleteExamFromDB = createAsyncThunk(
   'patients/deleteExamFromDB',
-  async () => {
+  async (patient) => {
+    const patientRef = doc(db, 'patients', patient.id)
+
+    await updateDoc(patientRef, {
+      examinations: arrayRemove({
+        examID: patient.examID,
+        isReviewed: patient.isReviewed,
+        review: patient.review,
+        date: patient.date,
+        time: patient.time,
+      }),
+    })
     try {
+      console.log(patient)
     } catch (error) {
       console.log(error)
     }
@@ -86,6 +112,7 @@ const initialState = {
   // samo testiram nista posebno
   testing: {},
   newExam: {},
+  appointmentToDelete: {},
 }
 
 export const patientsSlice = createSlice({
@@ -170,6 +197,9 @@ export const patientsSlice = createSlice({
 
       state.patients = newArray
     },
+    addAppointmentToDelete: (state, { payload }) => {
+      state.appointmentToDelete = payload
+    },
   },
   extraReducers: {
     [fetchPatientsFromDB.pending]: (state, { payload }) => {
@@ -185,11 +215,9 @@ export const patientsSlice = createSlice({
       state.loading = false
     },
     [addNewPatientToDB.pending]: (state, { payload }) => {
-      console.log(payload)
       state.loading = true
     },
     [addNewPatientToDB.fulfilled]: (state, { payload }) => {
-      console.log(payload)
       state.loading = false
     },
     [addNewPatientToDB.rejected]: (state, { payload }) => {
@@ -233,6 +261,7 @@ export const {
   addPatientForAppointment,
   addNewAppointment,
   deletePatient,
+  addAppointmentToDelete,
 } = patientsSlice.actions
 
 export default patientsSlice.reducer

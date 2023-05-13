@@ -10,6 +10,13 @@ const App = () => {
 
   return (
     <>
+      {/* Message that is for the larger viewports */}
+
+      <div className='viewport-msg'>
+        <h5>Not responsive</h5>
+        <h1>Only for larger than 1400px screens </h1>
+      </div>
+
       <AnimatePresence mode='wait'>
         {!isEntered && <Login setIsEntered={setIsEntered} key={'login'} />}
 

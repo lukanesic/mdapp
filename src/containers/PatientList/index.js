@@ -63,7 +63,7 @@ const PatientList = () => {
           {Object.keys(patients).length === 0 ? (
             <>
               {[0, 1, 2, 3, 4].map((item, index) => (
-                <PatientListPlaceholder key={'place'} />
+                <PatientListPlaceholder key={index} />
               ))}
               {/* <h1>Nema pacijenata</h1> */}
             </>
@@ -76,7 +76,7 @@ const PatientList = () => {
                     else if (patient.name.includes(patName)) return patient
                   })
                   .map((patient, index) => (
-                    <motion.div variants={item} key={'patients'}>
+                    <motion.div variants={item} key={patient.id}>
                       <PatientCard
                         key={patient.id}
                         name={patient.name}

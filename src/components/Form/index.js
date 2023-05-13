@@ -74,10 +74,12 @@ const Form = ({ funcForNextStep, isAdded, setIsAdded, btnTitle }) => {
       image: newPatient.image.value,
       examinations: [],
     }
+    const response = await dispatch(addNewPatientToDB(newPatientObj))
 
-    dispatch(addNewPatient(newPatientObj))
-    dispatch(addNewPatientToDB(newPatientObj))
-    setIsAdded(!isAdded)
+    if (response.payload) {
+      dispatch(addNewPatient({ ...newPatientObj, id: response.payload }))
+      setIsAdded(!isAdded)
+    }
 
     // u reduxu
     // try {

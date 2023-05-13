@@ -28,6 +28,29 @@ p {
   width: 800px;
   position: relative;
 }
+@media (min-width: 1px) and (max-width: 1600px) {
+  .login {
+    display: none;
+  }
+}
+
+.viewport-msg {
+  display: none;
+}
+@media (min-width: 1px) and (max-width: 1600px) {
+  .viewport-msg {
+    display: block;
+    text-align: center;
+  }
+  .viewport-msg h1 {
+    font-weight: 200;
+    letter-spacing: -1px;
+  }
+  .viewport-msg h6 {
+    font-weight: 400;
+    letter-spacing: -0.3px;
+  }
+}
 
 .home {
   min-width: 100%;
@@ -42,6 +65,11 @@ p {
   max-height: 820px;
   overflow: hidden;
   position: relative;
+}
+@media (min-width: 1px) and (max-width: 1600px) {
+  .home {
+    display: none;
+  }
 }
 
 .patients {
@@ -306,6 +334,7 @@ p {
 
 .patientcard {
   width: 200px;
+  max-height: 230px;
   background-color: #fff;
   border-radius: 5px;
   margin-bottom: 1rem;
@@ -610,9 +639,9 @@ p {
 .fill-form .inputs input {
   border: none;
   background-color: transparent;
-  width: 90px;
+  width: 70px;
   outline: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   border-bottom: 2px solid #01a1c8;
   text-align: center;
   color: rgb(26, 128, 179);
@@ -710,6 +739,7 @@ p {
 }
 .patient-from-appointment-info .patient-from-appointment-box .right ul li span {
   font-weight: 200;
+  font-size: 0.9rem;
 }
 
 .exam {

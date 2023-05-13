@@ -44,6 +44,7 @@ const AllExams = () => {
                 patientID={patient.id}
                 birthDate={patient.birthDate}
                 examinations={patient.examinations}
+                key={patient.id}
               />
             ))}
 

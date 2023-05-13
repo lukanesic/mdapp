@@ -11,7 +11,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AiFillDelete } from 'react-icons/ai'
 import { useState } from 'react'
 import SuccessMsg from '../../components/SuccessMsg'
-import { deleteExamination } from '../../redux/slices/patientsSlice'
+import {
+  deleteExamFromDB,
+  deleteExamination,
+} from '../../redux/slices/patientsSlice'
 
 const PatientFromAppointment = () => {
   const { selectExam } = useSelector((state) => state.patients)
@@ -35,9 +38,23 @@ const PatientFromAppointmentExam = ({ patient }) => {
   const [deleteExam, setDeleteExam] = useState(false)
   const dispatch = useDispatch()
 
+  console.log(patient.exam.examID)
+
   const handleDeleteExam = (payload) => {
+    console.log(payload)
     setDeleteExam(true)
     dispatch(deleteExamination(payload))
+
+    dispatch(
+      deleteExamFromDB({
+        examID: payload.examID,
+        date: payload.date,
+        review: payload.review,
+        isReviewed: payload.isReviewed,
+        time: payload.time,
+        id: payload.id,
+      })
+    )
   }
 
   return (
@@ -53,6 +70,10 @@ const PatientFromAppointmentExam = ({ patient }) => {
                   handleDeleteExam({
                     id: patient.patientID,
                     examID: patient.exam.examID,
+                    date: patient.exam.date,
+                    review: patient.exam.review,
+                    isReviewed: patient.exam.isReviewed,
+                    time: patient.exam.time,
                   })
                 }
               />
