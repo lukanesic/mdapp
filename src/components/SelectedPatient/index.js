@@ -1,4 +1,4 @@
-import React, { useState, useId } from 'react'
+import React, { useState } from 'react'
 import Btn from '../Btn'
 import FormLayout from '../../layouts/FormLayout'
 
@@ -15,7 +15,20 @@ import {
 const SelectedPatient = ({ setAppType, disable }) => {
   const [success, setSuccess] = useState(false)
 
-  const uniqueID = useId()
+  let generatedIds = []
+
+  function generateRandomId() {
+    let chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
+    let id = ''
+    do {
+      for (let i = 0; i < 5; i++) {
+        let randomIndex = Math.floor(Math.random() * chars.length)
+        id += chars[randomIndex]
+      }
+    } while (generatedIds.includes(id))
+    generatedIds.push(id)
+    return id
+  }
 
   const [newAppointment, setNewAppointment] = useState({
     day: { value: '', isValid: true },
@@ -55,7 +68,7 @@ const SelectedPatient = ({ setAppType, disable }) => {
       time: newAppointment.hour.value,
       isReviewed: false,
       review: '',
-      examID: uniqueID,
+      examID: generateRandomId(),
     }
 
     dispatch(

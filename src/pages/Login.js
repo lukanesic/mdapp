@@ -3,7 +3,7 @@ import LoginForm from '../components/LoginForm'
 import LoginLogo from '../components/LoginLogo'
 import { motion } from 'framer-motion'
 
-const Login = ({ setIsEntered }) => {
+const Login = ({ setIsEntered, isEntered }) => {
   return (
     <motion.div
       className='login'
@@ -14,7 +14,7 @@ const Login = ({ setIsEntered }) => {
       exit={{ opacity: 0, delay: 3 }}
     >
       <LoginLogo />
-      <LoginForm setIsEntered={setIsEntered} />
+      <LoginForm setIsEntered={setIsEntered} isEntered={isEntered} />
     </motion.div>
   )
 }

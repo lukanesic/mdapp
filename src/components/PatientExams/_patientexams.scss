@@ -1,6 +1,7 @@
 .patientexams {
   padding: 2rem;
-  height: 63%;
+  min-height: 100vh;
+  max-height: 100%;
   background-color: #fff;
   width: 100%;
   z-index: 2000;

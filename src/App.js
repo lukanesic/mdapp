@@ -7,6 +7,7 @@ import Home from './pages/Home'
 
 const App = () => {
   const [isEntered, setIsEntered] = useState(false)
+  const isLogged = localStorage.getItem('user')
 
   return (
     <>
@@ -18,13 +19,19 @@ const App = () => {
       </div>
 
       <AnimatePresence mode='wait'>
-        {!isEntered && <Login setIsEntered={setIsEntered} key={'login'} />}
+        {!isLogged && (
+          <Login
+            setIsEntered={setIsEntered}
+            isEntered={isEntered}
+            key={'login'}
+          />
+        )}
 
-        {isEntered && (
-          <>
-            <Transition key={'transition'} />
-            <Home key={'transition'} />
-          </>
+        {isLogged && (
+          <div key={'transition'}>
+            <Transition />
+            <Home />
+          </div>
         )}
       </AnimatePresence>
 

@@ -73,7 +73,10 @@ const PatientList = () => {
                 patients
                   .filter((patient) => {
                     if (patName === '') return patient
-                    else if (patient.name.includes(patName)) return patient
+                    else if (
+                      patient.name.toLowerCase().includes(patName.toLowerCase())
+                    )
+                      return patient
                   })
                   .map((patient, index) => (
                     <motion.div variants={item} key={patient.id}>

@@ -13,11 +13,17 @@ import LMenu from '../menus/LMenu'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { interactLeftMenu, interactRightMenu } from '../redux/slices/menuSlice'
+import { useEffect } from 'react'
+import { fetchPatientsFromDB } from '../redux/slices/patientsSlice'
 
 const Home = () => {
   const dispatch = useDispatch()
 
   const { dashboard, leftMenu, rightMenu } = useSelector((state) => state.menu)
+
+  useEffect(() => {
+    dispatch(fetchPatientsFromDB())
+  }, [dispatch])
 
   return (
     <motion.div

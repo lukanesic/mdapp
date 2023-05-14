@@ -6,7 +6,6 @@ import Btn from './../../components/Btn'
 import {
   addNewAppointmentToDB,
   addNewExam,
-  updateAppointmentToExamDB,
 } from '../../redux/slices/patientsSlice'
 import { interactRightMenu } from '../../redux/slices/menuSlice'
 

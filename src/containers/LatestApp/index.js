@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Heading2 from '../../components/Heading2'
 import PatientCard from '../../components/PatientCard'
 

@@ -2,14 +2,11 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Btn from '../Btn'
 import { useDispatch } from 'react-redux'
-import { fetchPatientsFromDB } from '../../redux/slices/patientsSlice'
 
 const LoginForm = ({ setIsEntered }) => {
-  const dispatch = useDispatch()
-
   const handleEntered = () => {
     setIsEntered(true)
-    dispatch(fetchPatientsFromDB())
+    localStorage.setItem('user', true)
   }
 
   return (

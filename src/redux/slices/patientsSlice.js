@@ -56,7 +56,6 @@ export const addNewAppointmentToDB = createAsyncThunk(
 export const updateAppointmentToExamDB = createAsyncThunk(
   'patientsSlice/updateAppointmentToExamDB',
   async (patient) => {
-    console.log(patient)
     try {
       const patientRef = doc(db, 'patients', patient.id)
 
@@ -203,7 +202,6 @@ export const patientsSlice = createSlice({
   },
   extraReducers: {
     [fetchPatientsFromDB.pending]: (state, { payload }) => {
-      console.log(payload)
       state.loading = true
     },
     [fetchPatientsFromDB.fulfilled]: (state, { payload }) => {
@@ -225,11 +223,9 @@ export const patientsSlice = createSlice({
       state.loading = false
     },
     [addNewAppointmentToDB.pending]: (state, { payload }) => {
-      console.log(payload)
       state.loading = true
     },
     [addNewAppointmentToDB.fulfilled]: (state, { payload }) => {
-      console.log(payload)
       state.loading = false
     },
     [addNewAppointmentToDB.rejected]: (state, { payload }) => {
@@ -237,11 +233,9 @@ export const patientsSlice = createSlice({
       state.loading = false
     },
     [deletePatientFromDB.pending]: (state, { payload }) => {
-      console.log(payload)
       state.loading = true
     },
     [deletePatientFromDB.fulfilled]: (state, { payload }) => {
-      console.log(payload)
       state.loading = false
     },
     [deletePatientFromDB.rejected]: (state, { payload }) => {

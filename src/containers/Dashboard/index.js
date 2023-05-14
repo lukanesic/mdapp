@@ -15,8 +15,13 @@ import {
   setForm,
 } from '../../redux/slices/menuSlice'
 
-const Dashboard = ({ setAddForm }) => {
+const Dashboard = () => {
   const dispatch = useDispatch()
+
+  const handleLogout = () => {
+    localStorage.clear()
+    window.location.reload()
+  }
 
   return (
     <motion.div
@@ -66,7 +71,7 @@ const Dashboard = ({ setAddForm }) => {
               Add Appointment
             </span>
           </li>
-          <li>Logout</li>
+          <li onClick={() => handleLogout()}>Logout</li>
         </ul>
       </div>
     </motion.div>

@@ -8,16 +8,7 @@ import ExamsInfo from '../../components/ExamInfo'
 const AllExams = () => {
   const { patients } = useSelector((state) => state.patients)
 
-  // const [noExams, setNoExams] = useState(false)
   const [patName, setPatName] = useState('')
-
-  // useEffect(() => {
-  //   if (
-  //     patients.map((patient) => Object.keys(patient.examinations).length === 0)
-  //   ) {
-  //     setNoExams(true)
-  //   }
-  // }, [patients])
 
   return (
     <div className='allexams'>
@@ -33,7 +24,10 @@ const AllExams = () => {
           patients
             .filter((patient) => {
               if (patName === '') return patient
-              else if (patient.name.includes(patName)) return patient
+              else if (
+                patient.name.toLowerCase().includes(patName.toLowerCase())
+              )
+                return patient
             })
             .map((patient, index) => (
               <Exam
@@ -47,18 +41,6 @@ const AllExams = () => {
                 key={patient.id}
               />
             ))}
-
-        {/* {patients.map((patient) => (
-          // <Exam
-          //   name={patient.name}
-          //   image={patient.image}
-          //   email={patient.email}
-          //   phone={patient.phone}
-          //   patientID={patient.id}
-          //   birthDate={patient.birthDate}
-          //   examinations={patient.examinations}
-          // />
-        ))} */}
       </div>
     </div>
   )
