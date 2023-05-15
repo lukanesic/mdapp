@@ -238,6 +238,14 @@ p {
   color: #fff;
 }
 
+.not-allowed {
+  width: 200px;
+  border: 1px solid #01a1c8;
+  background-color: transparent;
+  color: #01a1c8;
+  cursor: not-allowed !important;
+}
+
 .transition {
   height: 100%;
   width: 100%;
@@ -512,7 +520,7 @@ p {
 }
 .patientexams .patientexams-container {
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(3, 33.3%);
   height: 100%;
   overflow: scroll;
   z-index: 2000;

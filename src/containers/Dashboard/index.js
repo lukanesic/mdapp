@@ -46,7 +46,7 @@ const Dashboard = () => {
           <li>
             <BsCalendarWeek />{' '}
             <span onClick={() => dispatch(interactDashboard('appointments'))}>
-              Appointments
+              Appointments & Exams
             </span>
           </li>
           <li>

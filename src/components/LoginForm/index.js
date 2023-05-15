@@ -26,7 +26,11 @@ const LoginForm = ({ setIsEntered }) => {
       <h3>Sign in</h3>
       <input type='text' placeholder='Username' />
       <div className='err'>
-        <Btn title={'Next'} cls={'empty'} onClick={() => console.log('next')} />
+        <Btn
+          title={'Next'}
+          cls={'not-allowed'}
+          onClick={() => console.log('not allowed')}
+        />
       </div>
 
       <span>Or continue as Visitor to test the application</span>

@@ -83,3 +83,11 @@
   background-color: $text-dark;
   color: #fff;
 }
+
+.not-allowed {
+  width: 200px;
+  border: 1px solid $text-blue;
+  background-color: transparent;
+  color: $text-blue;
+  cursor: not-allowed !important;
+}
