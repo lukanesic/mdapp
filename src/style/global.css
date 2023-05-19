@@ -408,7 +408,7 @@ p {
   background-color: rgb(1, 161, 200);
   width: 100%;
   padding: 0.8rem 0rem;
-  height: 38%;
+  height: 300px !important;
   z-index: 2000;
 }
 .patientinfo .patient-info-box {
@@ -524,6 +524,9 @@ p {
   height: 100%;
   overflow: scroll;
   z-index: 2000;
+}
+.patientexams .patientexams-container .no-exams {
+  width: 600px;
 }
 
 .all-patient-exams {

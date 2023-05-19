@@ -67,8 +67,8 @@ const PatientExams = ({ patient, openExam, setOpenExam }) => {
               ))}
 
             {patient && Object.keys(patient.examinations).length === 0 && (
-              <div>
-                <Heading2 text={'Patient doesnt have examinations!'} />
+              <div className='no-exams'>
+                <Heading2 text={`Patient doesn't have any examination !`} />
                 <Paragraph
                   text={
                     'Start by adding new examination in the menu on the left.'
