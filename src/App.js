@@ -16,6 +16,8 @@ const App = () => {
       <div className='viewport-msg'>
         <h5>Not responsive</h5>
         <h1>Only for larger than 1400px screens </h1>
+        <span>Windows: ctrl - || </span>
+        <span>Mac: command -</span>
       </div>
 
       <AnimatePresence mode='wait'>

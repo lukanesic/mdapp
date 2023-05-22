@@ -45,6 +45,7 @@ p {
   .viewport-msg h1 {
     font-weight: 200;
     letter-spacing: -1px;
+    margin: 1rem 0;
   }
   .viewport-msg h6 {
     font-weight: 400;
